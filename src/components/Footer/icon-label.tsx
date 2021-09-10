@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Image, ImageSourcePropType, StyleProp, ViewStyle } from 'react-native'
+import { Image, ImageSourcePropType, ViewStyle } from 'react-native'
 import styled from 'styled-components'
 import { Flexbox, Paragraph } from '../../styles'
 
