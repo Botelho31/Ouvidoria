@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { SafeAreaView } from 'react-native'
-import InputLabel from '../../components/Forms/InputLabel'
+import InputTextArea from '../../components/Forms/InputTextArea'
 
 const Homepage: FC = () => {
   return (<SafeAreaView>
-    <InputLabel check={false} title='Titulo' placeholder='placeholder'/>
+    <InputTextArea check={false} type='texto' title='Titulo'/>
     </SafeAreaView>)
 }
 
