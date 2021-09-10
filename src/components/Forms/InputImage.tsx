@@ -29,6 +29,8 @@ interface InputImageProps{
 const InputImage: FC<InputImageProps> = (props: InputImageProps) => {
   const [resourcePath, setResourcePath] = React.useState('')
 
+  console.log(resourcePath)
+
   function selectFile () {
     const DEFAULT_OPTIONS: ImageLibraryOptions = {
       mediaType: 'photo',
