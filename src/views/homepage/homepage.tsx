@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { SafeAreaView } from 'react-native'
-import { Header2 } from '../../styles'
+import { Header } from '../../components'
 
 const Homepage: FC = () => {
-  return (<SafeAreaView><Header2>Header 2</Header2></SafeAreaView>)
+  return (<SafeAreaView><Header isSearchbar={false}/></SafeAreaView>)
 }
 
 export default Homepage
