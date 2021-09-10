@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { SafeAreaView } from 'react-native'
-import SecondaryButton from '../../components/Buttons/secondary-button'
+import InputSwitch from '../../components/Forms/InputSwitch'
 
 const Homepage: FC = () => {
   return (<SafeAreaView>
-    <SecondaryButton text='Enviar contribuição' width={157}/>
+    <InputSwitch text='Esta denúncia deve ser anônima?'/>
     </SafeAreaView>)
 }
 
