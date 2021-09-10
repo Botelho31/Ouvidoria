@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
 import { Image, StyleSheet, TextInput } from 'react-native'
 import styled from 'styled-components'
-import { Flexbox, StyleColors } from '../styles'
+import { Flexbox, StyleColors } from '../../styles'
 
-const SearchBarStyle = styled(Flexbox)`
+const SmallSearchBarStyle = styled(Flexbox)`
+  width: 291px;
   height: 32px;
   border-radius: 10px;
   background-color: ${StyleColors.lightGray};
@@ -22,19 +23,18 @@ const ImageStyle = styled(Image)`
   margin-right: 2px;
 `
 
-interface SearchBarProps {
+interface SmallSearchBarProps {
   style?: any,
-  placeholder?: string,
-  big: boolean
+  placeholder?: string
 }
 
-const SearchBar: FC<SearchBarProps> = (props: SearchBarProps) => {
+const SmallSearchBar: FC<SmallSearchBarProps> = (props: SmallSearchBarProps) => {
   return (
-    <SearchBarStyle style={props.style}>
+    <SmallSearchBarStyle style={props.style}>
       <TextInputStyle placeholder={props.placeholder}/>
-      <ImageStyle source={require('../assets/search.png')}/>
-    </SearchBarStyle>
+      <ImageStyle source={require('../../assets/search.png')}/>
+    </SmallSearchBarStyle>
   )
 }
 
-export default SearchBar
+export default SmallSearchBar

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Image, StyleSheet } from 'react-native'
 import styled from 'styled-components'
-import { SearchBar } from '.'
+import { SmallSearchBar } from '.'
 import { Flexbox, Header1, StyleColors } from '../styles'
 
 const styles = StyleSheet.create({
@@ -10,9 +10,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 1,
     shadowRadius: 0
-  },
-  searchBarStyle: {
-    width: 291
   },
   imageStyle: {
     height: 40,
@@ -46,7 +43,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   return (
     <HeaderStyle style={styles.headerStyle}>
       <Image style={props.isSearchbar ? styles.searchBarimageStyle : styles.imageStyle} source={require('../assets/user-circle.png')}/>
-      {props.isSearchbar ? <SearchBar big={false} style={styles.searchBarStyle} placeholder="Pesquise um órgão público"/> : <Header1 color={StyleColors.primary}> Voz do Povo </Header1>}
+      {props.isSearchbar ? <SmallSearchBar placeholder="Pesquise um órgão público"/> : <Header1 color={StyleColors.primary}> Voz do Povo </Header1>}
     </HeaderStyle>
   )
 }
