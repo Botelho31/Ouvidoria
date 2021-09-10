@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
+import { SafeAreaView } from 'react-native'
+import { Header1 } from '../../styles'
 
 const Homepage: FC = () => {
-  return <Text>Teste</Text>
+  return (<SafeAreaView><Header1>Teste</Header1></SafeAreaView>)
 }
 
 export default Homepage

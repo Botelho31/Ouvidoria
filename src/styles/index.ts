@@ -4,4 +4,4 @@ import Header3 from './typography/header-3'
 import Header4 from './typography/header-4'
 import Paragraph from './typography/paragraph'
 export { Header1, Header2, Header3, Header4, Paragraph }
-export * from './colors'
+// export * as StyleColors from './colors'

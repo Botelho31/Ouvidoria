@@ -4,7 +4,7 @@ interface HeaderProps{
   color?: string
 }
 
-const CardHeader = styled.h2<HeaderProps>`
+const CardHeader = styled.text<HeaderProps>`
   color: ${props => props.color || 'cor'};
   font-family: Saira;
   font-style: normal;
