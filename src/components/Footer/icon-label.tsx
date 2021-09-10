@@ -3,7 +3,7 @@ import { Image, ImageSourcePropType, ViewStyle } from 'react-native'
 import styled from 'styled-components'
 import { Flexbox, Paragraph } from '../../styles'
 
-const BackgroundFooter = styled(Flexbox)`
+const Background = styled(Flexbox)`
   background-color: white;
   width: 49px;
   height: 41px;
@@ -26,10 +26,10 @@ interface IconLabelProps{
 
 const IconLabel: FC<IconLabelProps> = (props: IconLabelProps) => {
   return (
-    <BackgroundFooter style={props.style} flexDirection='column'>
+    <Background style={props.style} flexDirection='column'>
       <Img source={props.image}></Img>
       <Label>{props.label}</Label>
-    </BackgroundFooter>
+    </Background>
   )
 }
 

@@ -3,7 +3,7 @@ import { Switch } from 'react-native'
 import styled from 'styled-components'
 import { Flexbox, Header3, StyleColors } from '../../styles'
 
-const BackgroundFooter = styled(Flexbox)`
+const Background = styled(Flexbox)`
   width: 335px;
   height: 64px;
 `
@@ -28,10 +28,10 @@ const InputSwitch: FC<InputSwitchProps> = (props: InputSwitchProps) => {
   }
 
   return (
-    <BackgroundFooter flexDirection='row'>
+    <Background flexDirection='row'>
       <Label>{props.text}</Label>
       <SwitchInput ios_backgroundColor={StyleColors.lightGray} trackColor={{ false: StyleColors.mediumGray, true: StyleColors.primary }} value={isSelected} onChange={updateSelect}></SwitchInput>
-    </BackgroundFooter>
+    </Background>
   )
 }
 

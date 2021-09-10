@@ -3,7 +3,7 @@ import { TextInput } from 'react-native'
 import styled from 'styled-components'
 import { Flexbox, Header3, StyleColors } from '../../styles'
 
-const BackgroundFooter = styled(Flexbox)`
+const Background = styled(Flexbox)`
   width: 335px;
   height: auto;
 `
@@ -43,10 +43,10 @@ const InputTextArea: FC<InputTextAreaProps> = (props: InputTextAreaProps) => {
   const weight = props.type === 'texto' ? 400 : 700
   const numberOfLines = props.type === 'texto' ? 4 : 3
   return (
-    <BackgroundFooter flexDirection='column'>
+    <Background flexDirection='column'>
       <Label>{props.title}</Label>
       <Input multiline={true} numberOfLines={numberOfLines} minHeight={(18 * numberOfLines)} fontSize={fontSize} weight={weight} textAlignVertical="top"></Input>
-    </BackgroundFooter>
+    </Background>
   )
 }
 

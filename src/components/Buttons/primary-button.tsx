@@ -6,7 +6,7 @@ interface BackgroundProps{
   width: number
 }
 
-const BackgroundFooter = styled(TouchableOpacity)<BackgroundProps>`
+const Background = styled(TouchableOpacity)<BackgroundProps>`
   width: ${props => props.width}px;
   height: 32px;
   background-color: ${StyleColors.primary};
@@ -26,9 +26,9 @@ interface PrimaryButtonProps{
 
 const PrimaryButton: FC<PrimaryButtonProps> = (props: PrimaryButtonProps) => {
   return (
-    <BackgroundFooter width={props.width}>
+    <Background width={props.width}>
       <Label>{props.text}</Label>
-    </BackgroundFooter>
+    </Background>
   )
 }
 
