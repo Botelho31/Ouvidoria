@@ -24,7 +24,8 @@ const ImageStyle = styled(Image)`
 
 interface SearchBarProps {
   style?: any,
-  placeholder?: string
+  placeholder?: string,
+  big: boolean
 }
 
 const SearchBar: FC<SearchBarProps> = (props: SearchBarProps) => {

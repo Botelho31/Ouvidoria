@@ -46,7 +46,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   return (
     <HeaderStyle style={styles.headerStyle}>
       <Image style={props.isSearchbar ? styles.searchBarimageStyle : styles.imageStyle} source={require('../assets/user-circle.png')}/>
-      {props.isSearchbar ? <SearchBar style={styles.searchBarStyle} placeholder="Pesquise um órgão público"/> : <Header1 color={StyleColors.primary}> Voz do Povo </Header1>}
+      {props.isSearchbar ? <SearchBar big={false} style={styles.searchBarStyle} placeholder="Pesquise um órgão público"/> : <Header1 color={StyleColors.primary}> Voz do Povo </Header1>}
     </HeaderStyle>
   )
 }
