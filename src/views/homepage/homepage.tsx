@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { SafeAreaView } from 'react-native'
-import InputSwitch from '../../components/Forms/InputSwitch'
+import InputImage from '../../components/Forms/InputImage'
 
 const Homepage: FC = () => {
   return (<SafeAreaView>
-    <InputSwitch text='Esta denúncia deve ser anônima?'/>
+    <InputImage text='Inserir arquivo ou localização em anexo'/>
     </SafeAreaView>)
 }
 
