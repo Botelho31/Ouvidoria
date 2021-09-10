@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import {View} from 'react-native';
+import React, { FC } from 'react'
+import { View } from 'react-native'
 
 const Signup: FC = () => {
-  return <View />;
-};
+  return <View />
+}
 
-export default Signup;
+export default Signup

@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import {View} from 'react-native';
+import React, { FC } from 'react'
+import { View } from 'react-native'
 
 const Operation: FC = () => {
-  return <View />;
-};
+  return <View />
+}
 
-export default Operation;
+export default Operation

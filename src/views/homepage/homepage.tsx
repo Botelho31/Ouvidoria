@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import {Text} from 'react-native';
+import React, { FC } from 'react'
+import { Text } from 'react-native'
 
 const Homepage: FC = () => {
-  return <Text>Teste</Text>;
-};
+  return <Text>Teste</Text>
+}
 
-export default Homepage;
+export default Homepage

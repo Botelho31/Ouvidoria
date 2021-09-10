@@ -1,8 +1,8 @@
-import React, {FC} from 'react';
-import {View} from 'react-native';
+import React, { FC } from 'react'
+import { View } from 'react-native'
 
 const Profile: FC = () => {
-  return <View />;
-};
+  return <View />
+}
 
-export default Profile;
+export default Profile
