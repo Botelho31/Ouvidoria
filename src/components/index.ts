@@ -1,2 +1,3 @@
 import Header from './header'
-export { Header }
+import SearchBar from './search-bar'
+export { Header, SearchBar }

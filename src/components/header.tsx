@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Image, StyleSheet } from 'react-native'
 import styled from 'styled-components'
+import { SearchBar } from '.'
 import { Flexbox, Header1, StyleColors } from '../styles'
 
 const styles = StyleSheet.create({
@@ -9,6 +10,23 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 1,
     shadowRadius: 0
+  },
+  searchBarStyle: {
+    width: 291
+  },
+  imageStyle: {
+    height: 40,
+    width: 40,
+    marginTop: 4,
+    marginLeft: 16,
+    marginRight: 64
+  },
+  searchBarimageStyle: {
+    height: 31,
+    width: 31,
+    marginTop: 8,
+    marginLeft: 20,
+    marginRight: 12
   }
 })
 
@@ -16,14 +34,8 @@ const HeaderStyle = styled(Flexbox)`
   height: 48px;
   width: 100%;
   background-color: white;
-`
-
-const ImageStyle = styled(Image)`
-  height: 40px;
-  width: 40px;
-  position: absolute;
-  top: 4px;
-  left: 16px;
+  align-items: center;
+  justify-content: flex-start;
 `
 
 interface HeaderProps {
@@ -33,8 +45,8 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = (props: HeaderProps) => {
   return (
     <HeaderStyle style={styles.headerStyle}>
-      <ImageStyle source={require('../assets/user-circle.png')}/>
-      <Header1 color={StyleColors.primary}> Voz do Povo </Header1>
+      <Image style={props.isSearchbar ? styles.searchBarimageStyle : styles.imageStyle} source={require('../assets/user-circle.png')}/>
+      {props.isSearchbar ? <SearchBar style={styles.searchBarStyle} placeholder="Pesquise um órgão público"/> : <Header1 color={StyleColors.primary}> Voz do Povo </Header1>}
     </HeaderStyle>
   )
 }
