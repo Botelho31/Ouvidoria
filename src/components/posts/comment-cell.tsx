@@ -46,8 +46,13 @@ interface CommentCellProps{
 
 const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
   function getComment () {
+    const children : Element[] = []
     if (props.comment?.answers) {
-      return (<CommentCell comment={props.comment?.answers}/>)
+      for (let index = 0; index < props.comment?.answers.length; index++) {
+        const comment = props.comment?.answers[index]
+        children.push(<CommentCell comment={comment}/>)
+      }
+      return (children)
     }
   }
   return (

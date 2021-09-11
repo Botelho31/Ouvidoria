@@ -2,7 +2,7 @@ export default interface Comment {
   name: string
   date: string
   comment: string
-  answers: Comment
+  answers: Comment[]
   likes: number
   liked?: boolean
 }
