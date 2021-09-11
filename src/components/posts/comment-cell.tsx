@@ -9,7 +9,7 @@ import DateCell from './date-cell'
 import UpvoteButton from './upvote-button'
 
 const Background = styled(Flexbox)`
-  margin-top: 10px;
+  margin-bottom: 10px;
 `
 
 const Line = styled(View)`

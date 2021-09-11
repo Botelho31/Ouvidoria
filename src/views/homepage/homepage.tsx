@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { SafeAreaView } from 'react-native'
-import CommentCell from '../../components/posts/comment-cell'
+import PostCell from '../../components/posts/post-cell'
 
 const Homepage: FC = () => {
   return (<SafeAreaView>
-      <CommentCell/>
+      <PostCell showComments={false}/>
     </SafeAreaView>)
 }
 
