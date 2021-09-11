@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { SafeAreaView } from 'react-native'
-import DateCell from '../../components/posts/date-cell'
+import CommentButton from '../../components/posts/comment-button'
 
 const Homepage: FC = () => {
   return (<SafeAreaView>
-    <DateCell>| 10/09/2021 - 17:24</DateCell>
+    <CommentButton commentNumber={1} width={112}/>
     </SafeAreaView>)
 }
 
