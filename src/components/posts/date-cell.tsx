@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { LayoutRectangle } from 'react-native'
 import styled from 'styled-components'
 import { Flexbox, Paragraph, StyleColors } from '../../styles'
 

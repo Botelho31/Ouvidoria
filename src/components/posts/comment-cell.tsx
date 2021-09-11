@@ -45,6 +45,11 @@ interface CommentCellProps{
 }
 
 const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
+  function getComment () {
+    if (props.comment?.answers) {
+      return (<CommentCell comment={props.comment?.answers}/>)
+    }
+  }
   return (
     <Background flexDirection='column'>
       <Line/>
@@ -68,6 +73,9 @@ const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
           </Margin>
         </Margin>
       </CommentSpace>
+      <Margin marginLeft='32px'>
+        {getComment()}
+      </Margin>
     </Background>
   )
 }
