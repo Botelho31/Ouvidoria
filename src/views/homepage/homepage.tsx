@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { SafeAreaView } from 'react-native'
-import CommentButton from '../../components/posts/comment-button'
+import UpvoteButton from '../../components/posts/upvote-button'
 
 const Homepage: FC = () => {
   return (<SafeAreaView>
-    <CommentButton commentNumber={1} width={112}/>
+      <UpvoteButton voteNumber={1} width={100} liked={false}/>
     </SafeAreaView>)
 }
 
