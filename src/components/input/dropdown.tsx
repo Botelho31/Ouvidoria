@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
-import { StyleSheet } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import styled from 'styled-components'
-import { Dropdown } from '..'
 import { Flexbox, Header3, Header4, Spacer, StyleColors } from '../../styles'
 
 const styles = StyleSheet.create({
@@ -9,13 +8,13 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     fontWeight: 'bold'
   },
-  pickerStyle: {
+  dropdownOptionStyle: {
+    color: StyleColors.mediumGray,
     backgroundColor: StyleColors.lightGray,
-    borderRadius: 10,
-    borderTopLeftRadius: 0,
-    borderTopRightRadius: 0,
     width: 332,
-    height: 132,
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 16,
     display: 'flex',
     justifyContent: 'center'
   },
@@ -43,27 +42,37 @@ const styles = StyleSheet.create({
   }
 })
 
-const InputDropdownStyle = styled(Flexbox)`
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-`
-
 interface InputDropdownProps {
-  style?: any,
   placeholder?: string,
   options: {
     value: string
-  }[],
-  label?: string
+  }[]
 }
 
 const InputDropdown: FC<InputDropdownProps> = (props: InputDropdownProps) => {
+  const [isOpen, setIsOpen] = React.useState(false)
+
+  function getOptions () {
+    const children = []
+    for (let i = 0; i < props.options.length; i++) {
+      children.push(<Text style={styles.dropdownOptionStyle}>{props.options[i].value}</Text>)
+    }
+    return children
+  }
+
   return (
-    <InputDropdownStyle style={props.style}>
-      <Header4 style={styles.headerStyle} color={StyleColors.primary}>{props.label}</Header4>
-      <Dropdown options={props.options} placeholder={props.placeholder}/>
-    </InputDropdownStyle>
+    <View >
+      <Flexbox style={styles.dropdownStyle}>
+        <Header3 style={styles.dropdownTextStyle}>{props.placeholder}</Header3>
+        <Spacer/>
+        <Image style={styles.dropdownIconStyle} source={require('../../assets/chevron-down.png')}/>
+      </Flexbox>
+      <ScrollView>
+        <Flexbox flexDirection="column">
+          {getOptions()}
+        </Flexbox>
+      </ScrollView>
+    </View>
   )
 }
 

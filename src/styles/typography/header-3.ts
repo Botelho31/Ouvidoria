@@ -7,7 +7,7 @@ interface HeaderProps{
 
 const Header3 = styled(Text)<HeaderProps>`
   color: ${props => props.color || StyleColors.darkGray};
-  font-family: Saira;
+  font-family: OpenSans;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
