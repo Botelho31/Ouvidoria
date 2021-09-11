@@ -5,5 +5,6 @@ import Header4 from './typography/header-4'
 import Paragraph from './typography/paragraph'
 import Flexbox from './flexbox'
 import Spacer from './spacer'
+import Margin from './margin'
 import * as StyleColors from './colors'
-export { Header1, Header2, Header3, Header4, Paragraph, Flexbox, Spacer, StyleColors }
+export { Header1, Header2, Header3, Header4, Paragraph, Flexbox, Spacer, Margin, StyleColors }

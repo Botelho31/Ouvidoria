@@ -1,10 +1,9 @@
 import React, { FC } from 'react'
+import { LayoutRectangle } from 'react-native'
 import styled from 'styled-components'
 import { Flexbox, Paragraph, StyleColors } from '../../styles'
 
 const Background = styled(Flexbox)`
-  margin-top: 8px;
-  margin-bottom: 8px;
 `
 
 const Label = styled(Paragraph)`
