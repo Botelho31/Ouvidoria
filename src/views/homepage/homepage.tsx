@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { SafeAreaView } from 'react-native'
-import InputImage from '../../components/Forms/InputImage'
+import DateCell from '../../components/posts/date-cell'
 
 const Homepage: FC = () => {
   return (<SafeAreaView>
-    <InputImage text='Inserir arquivo ou localização em anexo'/>
+    <DateCell>| 10/09/2021 - 17:24</DateCell>
     </SafeAreaView>)
 }
 
