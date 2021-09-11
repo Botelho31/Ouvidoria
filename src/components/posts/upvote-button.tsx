@@ -16,6 +16,7 @@ const Background = styled(Flexbox)<BackgroundProps>`
 const BackgroundButton = styled(TouchableOpacity)`
   height: 16px;
   width: 16px;
+  z-index: 10;
 `
 
 interface VoteProps {
@@ -25,12 +26,15 @@ interface VoteProps {
 const Label = styled(CardHeader)<VoteProps>`
   margin-right: 5px;
   margin-left: 5px;
+  align-items: center;
+  justify-content: center;
   color: ${props => props.color};
 `
 
 const Icon = styled(Image)<VoteProps>`
   width: 16px;
   height: 16px;
+  align-items: center;
   transform: ${props => props.liked ? 'rotate(0deg)' : 'rotate(180deg)'};
 `
 
@@ -53,13 +57,18 @@ const UpvoteButton: FC<UpvoteButtonProps> = (props: UpvoteButtonProps) => {
       likedColor = StyleColors.error
     }
   }
+
+  function click (liked: boolean) {
+    console.log(liked)
+  }
+
   return (
     <Background width={props.width}>
-      <BackgroundButton onPress={() => { console.log('Clicado') } }>
+      <BackgroundButton onPress={() => click(true) }>
         <Icon source={assetLiked} liked={true}></Icon>
       </BackgroundButton>
       <Label color={likedColor}>{props.voteNumber}</Label>
-      <BackgroundButton onPress={() => { console.log('Clicado 1') } }>
+      <BackgroundButton onPress={() => click(false) }>
         <Icon source={assetDisiked}></Icon>
       </BackgroundButton>
     </Background>
