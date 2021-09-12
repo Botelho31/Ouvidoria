@@ -1,3 +1,4 @@
+import { Text } from 'react-native'
 import styled from 'styled-components'
 import { StyleColors } from '..'
 
@@ -5,7 +6,7 @@ interface HeaderProps{
   color?: string
 }
 
-const CardHeader = styled.text<HeaderProps>`
+const CardHeader = styled(Text)<HeaderProps>`
   color: ${props => props.color || StyleColors.darkGray};
   font-family: Saira;
   font-style: normal;

@@ -24,7 +24,8 @@ module.exports = {
   ],
   rules: {
     'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error']
+    '@typescript-eslint/no-use-before-define': ['error'],
+    '@typescript-eslint/no-var-requires': 'off'
   },
   settings: {
     react: {
