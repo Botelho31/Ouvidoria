@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import styled from 'styled-components'
 import { Flexbox, Header3, Header4, Spacer, StyleColors } from '../../styles'
 
@@ -7,73 +7,90 @@ const styles = StyleSheet.create({
   headerStyle: {
     marginLeft: 16,
     fontWeight: 'bold'
-  },
-  dropdownOptionStyle: {
-    color: StyleColors.mediumGray,
-    backgroundColor: StyleColors.lightGray,
-    width: 332,
-    paddingTop: 8,
-    paddingBottom: 8,
-    paddingLeft: 16,
-    display: 'flex',
-    justifyContent: 'center'
-  },
-  dropdownStyle: {
-    backgroundColor: StyleColors.lightGray,
-    borderRadius: 10,
-    width: 332,
-    height: 32,
-    display: 'flex',
-    justifyContent: 'center'
-  },
-  dropdownTextStyle: {
-    color: StyleColors.darkGray,
-    textAlign: 'left',
-    fontFamily: 'OpenSans',
-    fontWeight: 'bold',
-    fontSize: 12,
-    paddingLeft: 16
-  },
-  dropdownIconStyle: {
-    width: 16,
-    height: 16,
-    marginTop: 4,
-    marginRight: 16
   }
 })
 
-interface InputDropdownProps {
+const DropdownStyle = styled(Flexbox)`
+    background-color: ${StyleColors.lightGray};
+    border-radius: 10px;
+    width: 332px;
+    height: 32px;
+    justify-content: center;
+`
+
+const DropdownTextStyle = styled(Header3)`
+    color: ${StyleColors.darkGray};
+    text-align: left;
+    font-family: 'OpenSans';
+    font-weight: bold;
+    font-size: 12px;
+    padding-left: 16px;
+`
+
+const DropdownOptionStyle = styled(Text)`
+    color: ${StyleColors.mediumGray};
+    background-color: ${StyleColors.lightGray};
+    width: 332px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    display: flex;
+    justify-content: center;
+`
+
+const DropdownIconStyle = styled(Image)`
+    width: 16px;
+    height: 16px;
+    margin-top: 4px;
+    margin-right: 16px;
+`
+
+const DropdownScrollStyle = styled(ScrollView)`
+  position: absolute;
+  top: 32px;
+`
+
+interface DropdownProps {
   placeholder?: string,
   options: {
     value: string
   }[]
 }
 
-const InputDropdown: FC<InputDropdownProps> = (props: InputDropdownProps) => {
+const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [currentValue, setCurrentValue] = React.useState('')
 
   function getOptions () {
     const children = []
     for (let i = 0; i < props.options.length; i++) {
-      children.push(<Text style={styles.dropdownOptionStyle}>{props.options[i].value}</Text>)
+      children.push(
+        <TouchableWithoutFeedback onPress={() => setCurrentValue(props.options[i].value)}>
+          <DropdownOptionStyle>
+            {props.options[i].value}
+          </DropdownOptionStyle>
+        </TouchableWithoutFeedback>
+      )
     }
     return children
   }
 
   return (
     <View >
-      <Flexbox style={styles.dropdownStyle}>
-        <Header3 style={styles.dropdownTextStyle}>{props.placeholder}</Header3>
-        <Spacer/>
-        <Image style={styles.dropdownIconStyle} source={require('../../assets/chevron-down.png')}/>
-      </Flexbox>
-      <ScrollView>
+      <TouchableWithoutFeedback onPress={() => setIsOpen(!isOpen)}>
+        <DropdownStyle>
+          <DropdownTextStyle>{currentValue === '' ? props.placeholder : currentValue}</DropdownTextStyle>
+          <Spacer/>
+          <DropdownIconStyle source={require('../../assets/chevron-down.png')}/>
+        </DropdownStyle>
+      </TouchableWithoutFeedback>
+      <DropdownScrollStyle style={{ display: isOpen ? 'flex' : 'none' }}>
         <Flexbox flexDirection="column">
           {getOptions()}
         </Flexbox>
-      </ScrollView>
+      </DropdownScrollStyle>
     </View>
   )
 }
 
-export default InputDropdown
+export default Dropdown
