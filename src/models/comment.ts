@@ -1,7 +1,7 @@
 export default interface Comment {
-  name: string
+  commentOwner: string
   date: string
-  comment: string
+  body: string
   answers: Comment[]
   likes: number
   liked?: boolean

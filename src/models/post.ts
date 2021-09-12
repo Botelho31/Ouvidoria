@@ -1,13 +1,13 @@
 import Comment from './comment'
 
 export default interface Post {
-  profileTitle: string
+  communityName: string
   date: string
   postOwner: string
   title: string
-  description: string
+  body: string
   comment: Comment[]
   likes: number
   liked?: boolean
-  answerd: boolean
+  status: string
 }
