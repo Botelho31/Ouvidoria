@@ -7,7 +7,7 @@ export default interface Post {
   title: string
   body: string
   comment: Comment[]
-  likes: number
-  liked?: boolean
+  upvotes: string[]
+  downvotes: string[]
   status: string
 }
