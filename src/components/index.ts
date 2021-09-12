@@ -5,5 +5,6 @@ import Dropdown from './input/dropdown'
 import InputDropdown from './input/input-dropdown'
 import NewsCell from './news-cell'
 import ScrollCell from './scroll-cell'
+import ReputationCell from './reputation-cell'
 
-export { Header, SmallSearchBar, SearchBar, Dropdown, InputDropdown, NewsCell, ScrollCell }
+export { Header, SmallSearchBar, SearchBar, Dropdown, InputDropdown, NewsCell, ScrollCell, ReputationCell }
