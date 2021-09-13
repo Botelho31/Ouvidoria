@@ -22,8 +22,8 @@ const FooterSelect = styled(Flexbox)`
   width: 390px;
   height: 48px;
   position: absolute;
-  top: -54px;
-  left: 0px;
+  top: -50px;
+  left: -10px;
   z-index: 1000000;
 `
 

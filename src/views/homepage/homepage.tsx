@@ -15,17 +15,21 @@ const Homepage: FC = () => {
   const [posts, setPosts] = React.useState<Post[]>([])
 
   const history = useHistory()
-  React.useEffect(async () => {
-    if (!config.isLoggedIn) {
-      history.push('/login')
-    }
+  React.useEffect(() => {
     async function loadData () {
       const noticiasArray = await list()
       setNoticias(noticiasArray)
       setPosts(await getByUser())
     }
-
-    loadData()
+    async function checkLogin () {
+      const user = await config.getUser()
+      if (!user) {
+        history.push('/login')
+      } else {
+        loadData()
+      }
+    }
+    checkLogin()
   }, [])
 
   function getNoticias () {
