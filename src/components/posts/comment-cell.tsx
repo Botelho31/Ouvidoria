@@ -7,6 +7,7 @@ import CardHeader from '../../styles/typography/card-header'
 import CommentButton from './comment-button'
 import DateCell from './date-cell'
 import UpvoteButton from './upvote-button'
+import moment from 'moment'
 import CommentInput from './comment-input'
 import { getById } from '../../infra/service/comment-service'
 
@@ -78,7 +79,7 @@ const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
           <InfoTitle flexDirection='column'>
             <UserName>Lucas Mendonca</UserName>
             <Margin marginTop='4px'>
-              <DateCell>{String(commentData.date)}</DateCell>
+              <DateCell>{String(moment(commentData.date).format('DD/MM/YYYY - HH:mm'))}</DateCell>
             </Margin>
           </InfoTitle>
         </Flexbox>

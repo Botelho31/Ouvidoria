@@ -16,7 +16,7 @@ interface DateCellProps{
 // Componente que mosrta a celula de tempo, certamente formatada
 const DateCell: FC<DateCellProps> = (props: DateCellProps) => {
   return (
-    <Background flexDirection='column'>
+    <Background flexDirection='column' verticalAlign="flex-start">
       <Label>{props.children}</Label>
     </Background>
   )

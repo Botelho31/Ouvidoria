@@ -54,7 +54,7 @@ const Homepage: FC = () => {
 
   return (
     <PageBody>
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ height: 120 }}>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ height: 120, marginTop: 20 }}>
         {getNoticias()}
       </ScrollView>
       <View style={{ marginRight: 20, marginLeft: 20, marginTop: 20, width: 335 }}>

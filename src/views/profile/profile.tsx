@@ -95,7 +95,7 @@ const Profile: FC = () => {
             <ReputationCell title='Reputação' percentage={community?.reputation} color={StyleColors.success}/>
             <Flexbox flexDirection='column'>
               <Margin marginLeft='20px'>
-                <PrimaryButton onPress={() => history.push(`/complaint/Contribuição/${community?.id}`)} text='Adicionar contribuição' width={157}/>
+                <PrimaryButton onPress={() => history.push(`/complaint/Contribuição/community/${community?.id}`)} text='Adicionar contribuição' width={157}/>
                 <Desc>
                   <LabelDesc>
                     {community ? community.desc : ''}

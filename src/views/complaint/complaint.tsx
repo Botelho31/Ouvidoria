@@ -92,6 +92,7 @@ const Complaint: FC = () => {
       setCommunityTypes(types)
     }
     if (params.type === 'Contribuição') {
+      console.log('teste')
       loadCommunity()
     } else {
       loadCommunityTypes()

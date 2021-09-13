@@ -7,6 +7,7 @@ import CardHeader from '../../styles/typography/card-header'
 import CommentButton from './comment-button'
 import CommentCell from './comment-cell'
 import DateCell from './date-cell'
+import moment from 'moment'
 import UpvoteButton from './upvote-button'
 import CommentInput from './comment-input'
 import { useHistory } from 'react-router'
@@ -119,7 +120,7 @@ const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
             <TitlePost>{postObject.title}</TitlePost>
           </TouchableWithoutFeedback>
           <Margin marginTop='8px'>
-            <DateCell>Publicado por anônimo | 10/09/2021 - 17:24</DateCell>
+            <DateCell>Publicado por {postObject.userName} | {String(moment(postObject.date).format('DD/MM/YYYY - HH:mm'))}</DateCell>
           </Margin>
         </TitleInfo>
         <Margin marginTop='4px'marginLeft='16px' marginRight='24px'>

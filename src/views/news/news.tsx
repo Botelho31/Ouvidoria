@@ -5,6 +5,8 @@ import { list } from '../../infra/service/news-service'
 import News from '../../infra/models/news'
 import { Header1, StyleColors, Margin, Header4, Header3 } from '../../styles'
 import styled from 'styled-components'
+import moment from 'moment'
+import DateCell from '../../components/posts/date-cell'
 
 const Img = styled(Image)`
   width: 400px;
@@ -39,7 +41,7 @@ const NewsScreen: FC = () => {
       <Img source={{ uri: noticias.length > 0 ? noticias[0].bannerImageUrl : '' }}/>
       <Margin marginTop='8px'>
       <Header1 style={{ marginLeft: 20, marginRight: 20 }}>{noticias.length > 0 ? noticias[0].title : ''}</Header1>
-      <Header4 style={{ marginLeft: 20, marginRight: 20 }} color={StyleColors.discreteGray}>{noticias.length > 0 ? noticias[0].date : ''}</Header4>
+      <Header4 style={{ marginLeft: 20, marginRight: 20 }} color={StyleColors.discreteGray}>{String(moment(noticias[0].date).format('DD/MM/YYYY - HH:mm'))}</Header4>
       </Margin>
 
       <Margin marginTop='16px'>
