@@ -8,7 +8,7 @@ interface HeaderProps{
 
 const CardHeader = styled(Text)<HeaderProps>`
   color: ${props => props.color || StyleColors.darkGray};
-  font-family: Saira;
+  font-family: 'Arial';
   font-style: normal;
   font-weight: bold;
   font-size: 14px;

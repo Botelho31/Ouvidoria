@@ -45,7 +45,7 @@ const Text = styled(Header4)`
 `
 
 interface CommentCellProps{
-  comment: Comment
+  comment?: Comment
 }
 
 const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
@@ -59,6 +59,17 @@ const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
       return (children)
     }
   }
+  let comment = {
+    upvotes: [],
+    downvotes: [],
+    answers: [],
+    date: 0
+  }
+  if (props.comment !== undefined) {
+    comment = props.comment
+  }
+  const voteCount = comment.upvotes.length - comment.downvotes.length
+
   return (
     <Background flexDirection='column'>
       <CommentSpace flexDirection='column' verticalAlign='flex-start'>
@@ -67,16 +78,16 @@ const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
           <InfoTitle flexDirection='column'>
             <UserName>Lucas Mendonca</UserName>
             <Margin marginTop='4px'>
-              <DateCell>{String(props.comment.date)}</DateCell>
+              <DateCell>{String(comment.date)}</DateCell>
             </Margin>
           </InfoTitle>
         </Flexbox>
         <Margin marginTop='4px'marginLeft='16px' marginRight='24px'>
-          <Text>{props.comment?.body}</Text>
+          <Text>{comment.body}</Text>
           <Margin marginTop='8px'>
             <Flexbox horizontalAlign='flex-start'>
-              <UpvoteButton voteNumber={props.comment?.upvotes.length - props.comment?.downvotes.length} width={80}/>
-              <CommentButton commentNumber={props.comment?.answers.length} width={112}/>
+              <UpvoteButton voteNumber={voteCount} width={80}/>
+              <CommentButton commentNumber={comment.answers.length} width={112}/>
             </Flexbox>
           </Margin>
         </Margin>

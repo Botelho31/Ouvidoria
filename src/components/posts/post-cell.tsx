@@ -70,12 +70,16 @@ interface PostCellProps{
 const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
   function getComments () {
     const children : Element[] = []
-    if (props.postInfo?.comments) {
-      for (let index = 0; index < props.postInfo?.comments.length; index++) {
+    if ((props.postInfo.comments != null) && props.showComments) {
+      for (let index = 0; index < props.postInfo.comments.length; index++) {
         const comment = props.postInfo?.comments[index]
         children.push(<CommentCell comment={comment}/>)
       }
-      return (children)
+      return (<View>
+        <Line/>
+        <CommentInput/>
+        {children}
+      </View>)
     }
   }
   let statusImage : ImageSourcePropType = require('../../assets/posts/status/andamento.png')
@@ -112,8 +116,6 @@ const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
             </Flexbox>
           </Margin>
         </Margin>
-        <Line/>
-        <CommentInput/>
         {getComments()}
       </CommentSpace>
     </Background>

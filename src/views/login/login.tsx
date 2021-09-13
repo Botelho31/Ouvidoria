@@ -40,7 +40,7 @@ const Login: FC = () => {
         <InputLabel onChange={(ev) => setPassword(ev)} title="Senha" placeholder="Insira sua senha" check password/>
         <PrimaryButton onPress={performLogin} style={{ marginBottom: 152, marginTop: 16 }} text="Login" width={101}/>
         <Header3> Não possui login?</Header3>
-        <SecondaryButton onPress={(val) => history.push('/signup')} text="Cadastre-se" width={101}/>
+        <SecondaryButton onPress={(val) => history.push('/signup')} style={{ marginTop: 16 }} text="Cadastre-se" width={101}/>
       </Flexbox>
     </ScrollView >
     <Text style={{ display: 'none' }}>{email}{password}</Text>
