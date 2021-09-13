@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import { Image, StyleSheet, View } from 'react-native'
-import { InputDropdown, PageBody, InputImage, InputTextArea, PrimaryButton, SecondaryButton } from '../../components'
-import InputSwitch from '../../components/forms/InputSwitch'
+import { InputDropdown, PageBody, InputImage, InputTextArea, InputSwitch, PrimaryButton, SecondaryButton } from '../../components'
 import { Flexbox, Header2, Paragraph, StyleColors } from '../../styles'
 import styled from 'styled-components'
 import config from '../../infra/config'

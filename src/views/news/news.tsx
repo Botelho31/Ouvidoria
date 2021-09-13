@@ -10,7 +10,7 @@ const Img = styled(Image)`
   width: 375px;
 `
 
-const News: FC = () => {
+const NewsScreen: FC = () => {
   const [noticias, setNoticias] = React.useState<News[]>([])
 
   React.useEffect(() => {
@@ -56,4 +56,4 @@ const News: FC = () => {
   )
 }
 
-export default News
+export default NewsScreen

@@ -13,5 +13,7 @@ import SecondaryButton from './buttons/secondary-button'
 import InputTextArea from './forms/InputTextArea'
 import InputImage from './forms/InputImage'
 import Footer from './footer/footer'
+import InputSwitch from './forms/InputSwitch'
+import InputLabel from './forms/InputLabel'
 
-export { Header, Footer, SmallSearchBar, SearchBar, Dropdown, InputDropdown, NewsCell, ScrollCell, ReputationCell, ProfileInfo, PageBody, PrimaryButton, SecondaryButton, InputTextArea, InputImage }
+export { Header, Footer, SmallSearchBar, SearchBar, Dropdown, InputLabel, InputDropdown, InputSwitch, NewsCell, ScrollCell, ReputationCell, ProfileInfo, PageBody, PrimaryButton, SecondaryButton, InputTextArea, InputImage }
