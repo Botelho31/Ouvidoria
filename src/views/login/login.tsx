@@ -1,12 +1,11 @@
 import React, { FC } from 'react'
-import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native'
+import { Image, SafeAreaView, ScrollView, Text, View, AsyncStorage } from 'react-native'
 import { Flexbox, Header1, Header3 } from '../../styles'
 import styled from 'styled-components'
 import { PrimaryButton, SecondaryButton, InputLabel } from '../../components'
 import { login } from '../../infra/service/user-service'
 import { useHistory } from 'react-router'
 import config from '../../infra/config'
-import { AsyncStorage } from 'react-native'
 
 const BannerStyle = styled(Flexbox)`
   height: 160px;
