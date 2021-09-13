@@ -66,8 +66,18 @@ const Complaint: FC = () => {
   const [communityVal, setCommunityVal] = React.useState('')
   const [typeVal, setTypeVal] = React.useState('')
   const [anonymousVal, setAnonymousVal] = React.useState(false)
+
+  const [communityContribution, setCommunityContribution] = React.useState(false)
+  const [contributionType] = React.useState(false)
   const history = useHistory()
 
+  const params = useParams()
+
+  React.useEffect(() => {
+    if (params.type === 'community') {
+      setCommunityContribution(true)
+    }
+  },[])
   function getTitleCard () {
     return (
       <TitleCard>

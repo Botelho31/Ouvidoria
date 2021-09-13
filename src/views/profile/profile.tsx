@@ -9,6 +9,7 @@ import { getById } from '../../infra/service/community-service'
 import Community from '../../infra/models/community'
 import styled from 'styled-components'
 import OrderDropdown from '../../components/input/order-dropdown'
+import { useParams } from 'react-router'
 
 const Desc = styled(View)`
   justify-content: center;
@@ -59,10 +60,11 @@ const Profile: FC = () => {
   const [community, setCommunity] = React.useState<Community | null>(null)
   const [posts, setPosts] = React.useState<Post[]>([])
 
+  const params = useParams()
   React.useEffect(() => {
     async function loadData () {
-      setCommunity(await getById('10862943581176474'))
-      setPosts(await getByCommunity('10862943581176474'))
+      setCommunity(await getById(params.id))
+      setPosts(await getByCommunity(params.id))
     }
 
     loadData()

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Image, ImageSourcePropType, TouchableOpacity, View } from 'react-native'
+import { Image, ImageSourcePropType, TouchableWithoutFeedback, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components'
 import Post from '../../infra/models/post'
 import { Flexbox, Header4, Margin, StyleColors } from '../../styles'
@@ -9,10 +9,13 @@ import CommentCell from './comment-cell'
 import DateCell from './date-cell'
 import UpvoteButton from './upvote-button'
 import CommentInput from './comment-input'
+import { useHistory } from 'react-router'
 
 const Background = styled(Flexbox)`
   width: 335px;
   margin-top: 8px;
+  margin-right: auto;
+  margin-left: auto;
   border-radius: 10px;
   background-color: ${StyleColors.lightGray};
 `
@@ -68,6 +71,7 @@ interface PostCellProps{
 }
 
 const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
+  const history = useHistory()
   function getComments () {
     const children : Element[] = []
     if ((props.postInfo.comments != null) && props.showComments) {
@@ -96,18 +100,22 @@ const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
       <CommentSpace flexDirection='column' verticalAlign='flex-start'>
         <Flexbox>
           <ProfileImage source={require('../../assets/posts/unb-image.png')}/>
-          <TouchableOpacity onPress={() => console.log('clicou no nick')}>
+          <TouchableOpacity onPress={() => history.push('/profile/' + props.postInfo.idCommunity)}>
             <ProfileName>{props.postInfo.communityName}</ProfileName>
           </TouchableOpacity>
         </Flexbox>
         <TitleInfo marginLeft='16px' marginTop='20px' marginBottom='4px'>
-          <TitlePost>{props.postInfo.title}</TitlePost>
+          <TouchableWithoutFeedback onPress={() => history.push('/thread/' + props.postInfo.id)}>
+            <TitlePost>{props.postInfo.title}</TitlePost>
+          </TouchableWithoutFeedback>
           <Margin marginTop='8px'>
             <DateCell>Publicado por anônimo | 10/09/2021 - 17:24</DateCell>
           </Margin>
         </TitleInfo>
         <Margin marginTop='4px'marginLeft='16px' marginRight='24px'>
-          <Text>{props.postInfo.body}</Text>
+          <TouchableWithoutFeedback onPress={() => history.push('/thread/' + props.postInfo.id)}>
+            <Text>{props.postInfo.body}</Text>
+          </TouchableWithoutFeedback>
           <Margin marginTop='8px' marginBottom='24px'>
             <Flexbox>
               <UpvoteButton voteNumber={props.postInfo.upvotes.length - props.postInfo.downvotes.length} width={80}/>

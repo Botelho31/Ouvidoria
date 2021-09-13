@@ -5,14 +5,16 @@ import { Margin } from '../../styles'
 import Post from '../../infra/models/post'
 import { getById } from '../../infra/service/post-service'
 import PostCell from '../../components/posts/post-cell'
+import { useParams } from 'react-router'
 
 const Threads: FC = () => {
   const postId = '10863071365431984'
   const [post, setPost] = React.useState<Post | null>(null)
 
+  const params = useParams()
   React.useEffect(() => {
     async function loadData () {
-      setPost(await getById(postId))
+      setPost(await getById(params.id))
     }
 
     loadData()

@@ -32,8 +32,8 @@ interface CommentInputProps{
 
 const CommentInput: FC<CommentInputProps> = (props: CommentInputProps) => {
   return (
-    <Background flexDirection='row' horizontalAlign='flex-start'>
-      <Input placeholder='Escrever um comentário...'></Input>
+    <Background flexDirection='row' horizontalAlign='flex-start' verticalAlign="center">
+      <Input style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft: 8 }}placeholder='Escrever um comentário...'></Input>
       <Img source={require('../../assets/send-icon.png')}/>
     </Background>
   )
