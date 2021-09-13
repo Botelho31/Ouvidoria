@@ -6,3 +6,5 @@ export const lightGray = '#F6F6F6'
 export const discreteGray = '#B0B0B0'
 export const mediumGray = '#808080'
 export const darkGray = '#606060'
+
+// Arquivo onde se encontra todas as cores do aplicativo

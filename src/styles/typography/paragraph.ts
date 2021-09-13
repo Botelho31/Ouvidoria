@@ -5,6 +5,7 @@ interface HeaderProps{
   color?: string
 }
 
+// Tamanho e configuração especifico para um paragraph
 const Paragraph = styled(Text)<HeaderProps>`
   color: ${props => props.color || StyleColors.darkGray};
   font-family: 'Arial' ;

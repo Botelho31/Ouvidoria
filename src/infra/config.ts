@@ -2,6 +2,7 @@
 import { AsyncStorage } from 'react-native'
 import User from './models/user'
 
+// Arquivo de configuração da aplicação
 const config = {
   baseIP: 'http://192.168.0.22:8080/',
   isLoggedIn: false,

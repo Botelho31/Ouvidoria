@@ -15,6 +15,7 @@ const Img = styled(Image)`
   width: 375px;
 `
 
+// A tela de explorar onde vai conter informações relevantes para todas as pessoas.
 const ExploreScreen: FC = () => {
   const [noticias, setNoticias] = React.useState<News[]>([])
   const [communityAsc, setCommunityAsc] = React.useState<Community[]>([])

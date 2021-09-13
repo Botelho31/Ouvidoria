@@ -62,6 +62,7 @@ const TitleCardImageBackground = styled(View)`
   border-radius: 10;
 `
 
+// A tela de contribuição do usuário onde ele pode deixar seu comentario, elogia ou qualquer que quer que seja sua contribuição
 const Complaint: FC = () => {
   const [titleVal, setTitleVal] = React.useState('')
   const [bodyVal, setBodyVal] = React.useState('')
@@ -70,7 +71,7 @@ const Complaint: FC = () => {
   const [anonymousVal, setAnonymousVal] = React.useState(false)
 
   const [type, setType] = React.useState('')
-  const [community, setCommunity] = React.useState(null)
+  const [community, setCommunity] = React.useState({ id: '', name: '' })
   const [communityTypes, setCommunityTypes] = React.useState([])
 
   const history = useHistory()
@@ -139,6 +140,7 @@ const Complaint: FC = () => {
     if (!user) {
       return
     }
+    console.log(type)
     if (type !== 'Contribuição') {
       const post = {
         idCommunity: communityTypes[0].id,
@@ -148,23 +150,23 @@ const Complaint: FC = () => {
         title: titleVal,
         body: bodyVal,
         status: 'NÃO_RESPONDIDA',
-        type: type,
-        anonymous: anonymousVal
+        type: type
+        // anonymous: anonymousVal
       }
       console.log(post)
       await create(post)
-      history.push('/profile/' + community.id)
+      history.push('/profile/' + communityTypes[0].id)
     } else {
       const post = {
-        idCommunity: community.id,
-        communityName: community.name,
+        idCommunity: community?.id,
+        communityName: community?.name,
         userName: user.name,
         idUser: user.email,
         title: titleVal,
         body: bodyVal,
         status: 'NÃO_RESPONDIDA',
-        type: typeVal,
-        anonymous: anonymousVal
+        type: typeVal
+        // anonymous: anonymousVal
       }
       console.log(post)
       await create(post)

@@ -5,6 +5,7 @@ import config from '../config'
 import axios from 'axios'
 
 const baseIP = config.baseIP
+// Função que faz um post
 export async function post (relativePath: string, data: any): Promise<any> {
   let token = await config.getToken()
   if (token === null) {
@@ -24,6 +25,7 @@ export async function post (relativePath: string, data: any): Promise<any> {
   return {}
 }
 
+// Função que faz um put
 export async function put (relativePath: string, data: any) : Promise<any> {
   try {
     let token = await config.getToken()
@@ -42,6 +44,7 @@ export async function put (relativePath: string, data: any) : Promise<any> {
   return []
 }
 
+// Função que faz um get
 export async function get (relativePath: string) : Promise<any> {
   try {
     let token = await config.getToken()

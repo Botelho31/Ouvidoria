@@ -8,6 +8,7 @@ interface MarginProps{
   marginBottom?: string,
 }
 
+// View que setta a margin de outras views
 const Margin = styled(View)<MarginProps>`
   alignSelf: stretch;
   margin-right: ${props => props.marginRight || '0px'};

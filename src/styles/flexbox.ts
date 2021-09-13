@@ -7,6 +7,7 @@ interface FlexboxProps{
   flexDirection?: string,
 }
 
+// Cria uma view flex
 const Flexbox = styled(View)<FlexboxProps>`
   display: flex;
   justify-content: ${props => props.horizontalAlign || 'center'};

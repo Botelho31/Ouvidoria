@@ -6,6 +6,7 @@ interface HeaderProps{
   color?: string
 }
 
+// Tamanho e configuração especifico para um cardHeader
 const CardHeader = styled(Text)<HeaderProps>`
   color: ${props => props.color || StyleColors.darkGray};
   font-family: 'Arial';
