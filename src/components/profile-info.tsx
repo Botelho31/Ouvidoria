@@ -84,7 +84,7 @@ const ProfileInfo: FC<ProfileInfoProps> = (props: ProfileInfoProps) => {
               <ProfileImageStyle source={{
                 uri: props.profileImageURL
               }}/>
-              <AddIcon style={{ display: following ? 'flex' : 'none' }} source={require('../assets/add-icon.png')}/>
+              <AddIcon style={{ display: following ? 'none' : 'flex' }} source={require('../assets/add-icon.png')}/>
             </FollowButton>
           </TouchableOpacity>
           <Header2 color={StyleColors.darkGray}>{props.title}</Header2>
