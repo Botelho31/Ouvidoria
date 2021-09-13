@@ -18,11 +18,13 @@ const BackgroundFooter = styled(Flexbox)`
 `
 
 const FooterSelect = styled(Flexbox)`
-  background-color: black;
-  width: 375px;
+  background-color: white;
+  width: 390px;
   height: 48px;
-  position: relative;
-  left: 0;
+  position: absolute;
+  top: -54px;
+  left: 0px;
+  z-index: 1000000;
 `
 
 const Img = styled(Image)`
@@ -60,55 +62,39 @@ const complaintTypes = [
 
 const Footer: FC = () => {
   const [isOpen, setIsOpen] = React.useState(false)
-  const [currentPos, setCurrentPos] = React.useState({ x: 0, y: 0 })
-
-  const footerRef : React.RefObject<View> = React.useRef()
-
-  React.useEffect(() => {
-    footerRef.current.measure((fx, fy, width, height, px, py) => {
-      setCurrentPos({ x: px, y: py })
-    })
-  }, [])
 
   function getOptions () {
     const children = []
 
     for (let i = 0; i < complaintTypes.length; i += 1) {
       children.push(
-        <Flexbox>
-          <Image style={{ width: 32, height: 32 }} source={complaintTypes[i].img} />
-          <Paragraph color={StyleColors.primary}>{complaintTypes[i].value}</Paragraph>
-        </Flexbox>
+        <Link to="/complaint">
+          <Flexbox flexDirection="column" horizontalAlign="space-between" style={{ marginLeft: 5, marginRight: 5 }}>
+            <Image style={{ width: 32, height: 32 }} source={complaintTypes[i].img} />
+            <Paragraph color={StyleColors.primary}>{complaintTypes[i].value}</Paragraph>
+          </Flexbox>
+        </Link>
       )
     }
     return children
   }
 
   return (
-    <BackgroundFooter ref={footerRef}>
-      <Link to="/">
-        <IconLabel style={{ marginLeft: 36, marginRight: 76 }} image={require('../../assets/footer/home-icon.png')} label='Pág. inicial'/>
-      </Link>
-      <TouchableOpacity onPress={() => { setIsOpen(!isOpen); console.log('teste') }}>
-        <Img source={require('../../assets/footer/plus-icon.png')}/>
-      </TouchableOpacity>
-      <Link to="/explore">
-        <IconLabel style={{ marginLeft: 76, marginRight: 36 }} image={require('../../assets/footer/explore-icon.png')} label='Explorar'/>
-      </Link>
-      <Modal
-          transparent={true}
-          visible={isOpen}
-          onRequestClose={() => {
-            setIsOpen(!isOpen)
-          }}
-        >
-          <Flexbox>
-            <FooterSelect>
-              {getOptions()}
-              <Text>ALOALOALOALOALAOAO</Text>
-            </FooterSelect>
-          </Flexbox>
-        </Modal>
+    <BackgroundFooter>
+      <Flexbox>
+        <Link to="/">
+          <IconLabel style={{ marginLeft: 36, marginRight: 76 }} image={require('../../assets/footer/home-icon.png')} label='Pág. inicial'/>
+        </Link>
+        <TouchableOpacity onPress={() => { setIsOpen(!isOpen); console.log('teste') }}>
+          <Img source={require('../../assets/footer/plus-icon.png')}/>
+        </TouchableOpacity>
+        <Link to="/explore">
+          <IconLabel style={{ marginLeft: 76, marginRight: 36 }} image={require('../../assets/footer/explore-icon.png')} label='Explorar'/>
+        </Link>
+      </Flexbox>
+      <FooterSelect style={{ display: isOpen ? 'flex' : 'none' }}>
+        {getOptions()}
+      </FooterSelect>
     </BackgroundFooter>
   )
 }
