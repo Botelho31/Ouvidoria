@@ -7,7 +7,8 @@ import { Header1, StyleColors, Margin, Header4, Header3 } from '../../styles'
 import styled from 'styled-components'
 
 const Img = styled(Image)`
-  width: 375px;
+  width: 400px;
+  height: 184px;
 `
 
 // A tela de notícia, onde o usuario conseguira ver todas as informações daquela notícia
@@ -26,9 +27,9 @@ const NewsScreen: FC = () => {
 
   function getNoticias () {
     const children = []
-    for (let index = 0; index < noticias.length; index++) {
+    for (let index = 1; index < noticias.length; index++) {
       const noticia = noticias[index]
-      children.push(<NewsCell title={noticia.title} imageURL=''/>)
+      children.push(<NewsCell title={noticia.title} imageURL={noticia.bannerImageUrl}/>)
     }
     return children
   }
@@ -37,16 +38,16 @@ const NewsScreen: FC = () => {
     <PageBody>
       <Img source={{ uri: noticias.length > 0 ? noticias[0].bannerImageUrl : '' }}/>
       <Margin marginTop='8px'>
-      <Header1>{noticias.length > 0 ? noticias[0].title : ''}</Header1>
-      <Header4 color={StyleColors.discreteGray}>{noticias.length > 0 ? noticias[0].date : ''}</Header4>
+      <Header1 style={{ marginLeft: 20, marginRight: 20 }}>{noticias.length > 0 ? noticias[0].title : ''}</Header1>
+      <Header4 style={{ marginLeft: 20, marginRight: 20 }} color={StyleColors.discreteGray}>{noticias.length > 0 ? noticias[0].date : ''}</Header4>
       </Margin>
 
       <Margin marginTop='16px'>
-        <Header4 color={StyleColors.darkGray}>{noticias.length > 0 ? noticias[0].body : ''}</Header4>
+        <Header4 style={{ marginLeft: 20, marginRight: 20 }} color={StyleColors.darkGray}>{noticias.length > 0 ? noticias[0].body : ''}</Header4>
       </Margin>
 
       <Margin marginTop='24px'>
-        <Header3 color={StyleColors.primary}>Mais notícias:</Header3>
+        <Header3 style={{ marginLeft: 20, marginRight: 20 }} color={StyleColors.primary}>Mais notícias:</Header3>
         <Margin marginTop='8px'>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ height: 120 }}>
           {getNoticias()}

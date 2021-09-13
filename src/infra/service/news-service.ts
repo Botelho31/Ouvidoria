@@ -3,6 +3,7 @@ import { get, post } from './base-service'
 
 const relativePath = 'news/'
 
+// Função que cria uma notícia
 export async function create (news: News): Promise<News> {
   try {
     const data = await post(relativePath, news)
@@ -13,6 +14,7 @@ export async function create (news: News): Promise<News> {
   return {} as News
 }
 
+// Função que lista todas as notícias
 export async function list () : Promise<News[]> {
   try {
     const data = await get(relativePath + 'list')

@@ -3,6 +3,7 @@ import { get, post, put } from './base-service'
 
 const relativePath = 'post/'
 
+// Função que cria um post
 export async function create (postData: Post): Promise<Post> {
   try {
     const data = await post(relativePath, postData)
@@ -13,6 +14,7 @@ export async function create (postData: Post): Promise<Post> {
   return {} as Post
 }
 
+// Função que lista um post por ID
 export async function getById (id: string) : Promise<Post> {
   try {
     const data = await get(relativePath + id)
@@ -23,6 +25,7 @@ export async function getById (id: string) : Promise<Post> {
   return {} as Post
 }
 
+// Função que lista os posts relevantes para um determinado usuário
 export async function getByUser () : Promise<Post[]> {
   try {
     console.log('data')
@@ -35,6 +38,7 @@ export async function getByUser () : Promise<Post[]> {
   return []
 }
 
+// Função que lista os posts com base nas comunidades
 export async function getByCommunity (id: string) : Promise<Post[]> {
   try {
     const data = await get(relativePath + `community/${id}`)

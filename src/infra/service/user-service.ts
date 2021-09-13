@@ -4,6 +4,7 @@ import { post, put } from './base-service'
 
 const relativePath = 'user/'
 
+// Função que cria um conta
 export async function signup (user: User): Promise<User> {
   try {
     const data = await post(relativePath + 'signup', user)
@@ -14,6 +15,7 @@ export async function signup (user: User): Promise<User> {
   return {} as User
 }
 
+// Função que logga
 export async function login (email: string, password: string): Promise<User> {
   try {
     const data = await post(relativePath + 'login', {
@@ -27,6 +29,7 @@ export async function login (email: string, password: string): Promise<User> {
   return {} as User
 }
 
+// Função que segue uma communidade
 export async function community (id: string) : Promise<User> {
   try {
     const data = await put(relativePath + `community/${id}`, {})

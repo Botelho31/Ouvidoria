@@ -89,13 +89,13 @@ const Profile: FC = () => {
   return (
     <PageBody>
       <ScrollView>
-        <ProfileInfo idCommunity={community.id} title={community ? community.name : ''} bannerImageURL={community ? community.bannerImageUrl : ''} profileImageURL={community ? community.profileImageUrl : ''}/>
+        <ProfileInfo idCommunity={community?.id} title={community ? community.name : ''} bannerImageURL={community ? community.bannerImageUrl : ''} profileImageURL={community ? community.profileImageUrl : ''}/>
         <Margin marginTop='8px'>
           <Flexbox flexDirection='row'>
             <ReputationCell title='Reputação' percentage={community?.reputation} color={StyleColors.success}/>
             <Flexbox flexDirection='column'>
               <Margin marginLeft='20px'>
-                <PrimaryButton onPress={() => history.push(`/complaint/Contribuição/${community.id}`)} text='Adicionar contribuição' width={157}/>
+                <PrimaryButton onPress={() => history.push(`/complaint/Contribuição/${community?.id}`)} text='Adicionar contribuição' width={157}/>
                 <Desc>
                   <LabelDesc>
                     {community ? community.desc : ''}
