@@ -37,7 +37,7 @@ export async function put (relativePath: string, data: any) : Promise<any> {
     })
     return response.data
   } catch (err) {
-    console.log(err)
+    console.log(err.response.data)
   }
   return []
 }

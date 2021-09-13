@@ -10,6 +10,7 @@ import DateCell from './date-cell'
 import UpvoteButton from './upvote-button'
 import CommentInput from './comment-input'
 import { useHistory } from 'react-router'
+import { getById } from '../../infra/service/post-service'
 
 const Background = styled(Flexbox)`
   width: 335px;
@@ -71,12 +72,20 @@ interface PostCellProps{
 }
 
 const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
+  const [postObject, setPostObject] = React.useState(props.postInfo)
+
   const history = useHistory()
+
+  async function reloadData () {
+    const data = await getById(props.postInfo.id)
+    setPostObject(data)
+  }
+
   function getComments () {
     const children : Element[] = []
-    if ((props.postInfo.comments != null) && props.showComments) {
-      for (let index = 0; index < props.postInfo.comments.length; index++) {
-        const comment = props.postInfo?.comments[index]
+    if ((postObject.comments != null) && props.showComments) {
+      for (let index = 0; index < postObject.comments.length; index++) {
+        const comment = postObject?.comments[index]
         children.push(<CommentCell comment={comment}/>)
       }
       return (<View>
@@ -87,10 +96,10 @@ const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
     }
   }
   let statusImage : ImageSourcePropType = require('../../assets/posts/status/andamento.png')
-  if (props.postInfo.status !== 'EM_ANDAMENTO') {
-    if (props.postInfo.status === 'RESPONDIDO') {
+  if (postObject.status !== 'EM_ANDAMENTO') {
+    if (postObject.status === 'RESPONDIDO') {
       statusImage = require('../../assets/posts/status/resp.png')
-    } else if (props.postInfo.status === 'NAO_RESPONDIDO') {
+    } else if (postObject.status === 'NAO_RESPONDIDO') {
       statusImage = require('../../assets/posts/status/nao-resp.png')
     }
   }
@@ -100,26 +109,26 @@ const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
       <CommentSpace flexDirection='column' verticalAlign='flex-start'>
         <Flexbox>
           <ProfileImage source={require('../../assets/posts/unb-image.png')}/>
-          <TouchableOpacity onPress={() => history.push('/profile/' + props.postInfo.idCommunity)}>
-            <ProfileName>{props.postInfo.communityName}</ProfileName>
+          <TouchableOpacity onPress={() => history.push('/profile/' + postObject.idCommunity)}>
+            <ProfileName>{postObject.communityName}</ProfileName>
           </TouchableOpacity>
         </Flexbox>
         <TitleInfo marginLeft='16px' marginTop='20px' marginBottom='4px'>
-          <TouchableWithoutFeedback onPress={() => history.push('/thread/' + props.postInfo.id)}>
-            <TitlePost>{props.postInfo.title}</TitlePost>
+          <TouchableWithoutFeedback onPress={() => history.push('/thread/' + postObject.id)}>
+            <TitlePost>{postObject.title}</TitlePost>
           </TouchableWithoutFeedback>
           <Margin marginTop='8px'>
             <DateCell>Publicado por anônimo | 10/09/2021 - 17:24</DateCell>
           </Margin>
         </TitleInfo>
         <Margin marginTop='4px'marginLeft='16px' marginRight='24px'>
-          <TouchableWithoutFeedback onPress={() => history.push('/thread/' + props.postInfo.id)}>
-            <Text>{props.postInfo.body}</Text>
+          <TouchableWithoutFeedback onPress={() => history.push('/thread/' + postObject.id)}>
+            <Text>{postObject.body}</Text>
           </TouchableWithoutFeedback>
           <Margin marginTop='8px' marginBottom='24px'>
             <Flexbox>
-              <UpvoteButton voteNumber={props.postInfo.upvotes.length - props.postInfo.downvotes.length} width={80}/>
-              <CommentButton commentNumber={props.postInfo.comments.length} width={112}/>
+              <UpvoteButton idPost={postObject.id} onChange={reloadData} voteNumber={postObject.upvotes.length - postObject.downvotes.length} width={80}/>
+              <CommentButton commentNumber={postObject.comments.length} width={112}/>
               <Status source={statusImage}/>
             </Flexbox>
           </Margin>

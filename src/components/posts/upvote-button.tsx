@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import { Image, ImageSourcePropType, TouchableOpacity } from 'react-native'
 import styled from 'styled-components'
+import { vote } from '../../infra/service/post-service'
+import { voteComment } from '../../infra/service/comment-service'
 import { Flexbox, StyleColors } from '../../styles'
 import CardHeader from '../../styles/typography/card-header'
 
@@ -39,9 +41,12 @@ const Icon = styled(Image)<VoteProps>`
 `
 
 interface UpvoteButtonProps{
+  idPost?: string
+  idComment?: string
   voteNumber: number
   liked?: boolean
   width: number
+  onChange: () => void
 }
 
 const UpvoteButton: FC<UpvoteButtonProps> = (props: UpvoteButtonProps) => {
@@ -58,8 +63,22 @@ const UpvoteButton: FC<UpvoteButtonProps> = (props: UpvoteButtonProps) => {
     }
   }
 
-  function click (liked: boolean) {
-    console.log(liked)
+  async function click (liked: boolean) {
+    let type = 'UPVOTE'
+    if (!liked) {
+      type = 'DOWNVOTE'
+    }
+    try {
+      console.log(props)
+      if (props.idPost) {
+        await vote(props.idPost, type)
+      } else {
+        await voteComment(props.idComment, type)
+      }
+    } catch (err) {
+      console.log(err.response.data)
+    }
+    props.onChange()
   }
 
   return (
