@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { Image, Dimensions, StatusBar } from 'react-native'
+import { Link } from 'react-router-native'
 import styled from 'styled-components'
 import { Flexbox } from '../../styles'
 import IconLabel from './icon-label'
@@ -25,9 +26,15 @@ const Img = styled(Image)`
 const Footer: FC = () => {
   return (
     <BackgroundFooter>
-      <IconLabel style={{ marginLeft: 36, marginRight: 76 }} image={require('../../assets/footer/home-icon.png')} label='Pág. inicial'/>
-      <Img source={require('../../assets/footer/plus-icon.png')}/>
-      <IconLabel style={{ marginLeft: 76, marginRight: 36 }} image={require('../../assets/footer/explore-icon.png')} label='Explorar'/>
+      <Link to="/">
+        <IconLabel style={{ marginLeft: 36, marginRight: 76 }} image={require('../../assets/footer/home-icon.png')} label='Pág. inicial'/>
+      </Link>
+      <Link to="/complaint">
+        <Img source={require('../../assets/footer/plus-icon.png')}/>
+      </Link>
+      <Link to="/explore">
+        <IconLabel style={{ marginLeft: 76, marginRight: 36 }} image={require('../../assets/footer/explore-icon.png')} label='Explorar'/>
+      </Link>
     </BackgroundFooter>
   )
 }

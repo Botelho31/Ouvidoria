@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components'
-import { Header3, StyleColors } from '../../styles'
+import { Flexbox, Header3, StyleColors } from '../../styles'
 interface BackgroundProps{
   width: number
 }
@@ -22,12 +22,15 @@ const Label = styled(Header3)`
 interface SecondaryButtonProps{
   text: string
   width: number
+  onPress?: void
 }
 
 const SecondaryButton: FC<SecondaryButtonProps> = (props: SecondaryButtonProps) => {
   return (
-    <Background width={props.width}>
-      <Label>{props.text}</Label>
+    <Background onPress={props.onPress} width={props.width}>
+      <Flexbox style={{ width: '100%', height: '100%' }}>
+        <Label>{props.text}</Label>
+      </Flexbox>
     </Background>
   )
 }

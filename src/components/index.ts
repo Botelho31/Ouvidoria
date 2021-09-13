@@ -8,5 +8,10 @@ import ScrollCell from './scroll-cell'
 import ReputationCell from './reputation-cell'
 import ProfileInfo from './profile-info'
 import PageBody from './pagebody'
+import PrimaryButton from './buttons/primary-button'
+import SecondaryButton from './buttons/secondary-button'
+import InputTextArea from './forms/InputTextArea'
+import InputImage from './forms/InputImage'
+import Footer from './footer/footer'
 
-export { Header, SmallSearchBar, SearchBar, Dropdown, InputDropdown, NewsCell, ScrollCell, ReputationCell, ProfileInfo, PageBody }
+export { Header, Footer, SmallSearchBar, SearchBar, Dropdown, InputDropdown, NewsCell, ScrollCell, ReputationCell, ProfileInfo, PageBody, PrimaryButton, SecondaryButton, InputTextArea, InputImage }
