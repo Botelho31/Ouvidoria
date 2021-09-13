@@ -1,9 +1,8 @@
 import React, { FC } from 'react'
-import { Image, SafeAreaView, StyleSheet } from 'react-native'
+import { SafeAreaView, ScrollView, View } from 'react-native'
 import styled from 'styled-components'
 import { Header } from '.'
-import { Flexbox, Header3, Spacer, StyleColors } from '../styles'
-import Footer from './Footer/footer'
+import Footer from './footer/footer'
 
 interface PageBodyProps {
   children: Element[] | Element
@@ -11,9 +10,11 @@ interface PageBodyProps {
 
 const PageBody: FC<PageBodyProps> = (props: PageBodyProps) => {
   return (
-    <SafeAreaView style={{ display: 'flex', width: '375px', margin: 'auto' }}>
+    <SafeAreaView style={{ display: 'flex', width: 375, marginRight: 'auto', marginLeft: 'auto' }}>
       <Header isSearchbar={true}/>
-        {props.children}
+      <ScrollView>
+          {props.children}
+      </ScrollView>
       <Footer />
     </SafeAreaView>
   )

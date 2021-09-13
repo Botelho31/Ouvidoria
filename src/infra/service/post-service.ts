@@ -16,7 +16,7 @@ export async function create (postData: Post): Promise<Post> {
 export async function getById (id: string) : Promise<Post> {
   try {
     const data = await get(relativePath + id)
-    return data.data as Post
+    return data as Post
   } catch (err) {
     console.log(err)
   }
@@ -25,8 +25,10 @@ export async function getById (id: string) : Promise<Post> {
 
 export async function getByUser () : Promise<Post[]> {
   try {
+    console.log('data')
     const data = await get(relativePath + 'user')
-    return data.data as Post[]
+    console.log(data)
+    return data as Post[]
   } catch (err) {
     console.log(err)
   }
@@ -36,7 +38,7 @@ export async function getByUser () : Promise<Post[]> {
 export async function getByCommunity (id: string) : Promise<Post[]> {
   try {
     const data = await get(relativePath + `community/${id}`)
-    return data.data as Post[]
+    return data as Post[]
   } catch (err) {
     console.log(err)
   }
@@ -46,7 +48,7 @@ export async function getByCommunity (id: string) : Promise<Post[]> {
 export async function getSorted (asc: boolean) : Promise<Post[]> {
   try {
     const data = await get(relativePath + `ranking/${asc}`)
-    return data.data as Post[]
+    return data as Post[]
   } catch (err) {
     console.log(err)
   }
@@ -56,7 +58,7 @@ export async function getSorted (asc: boolean) : Promise<Post[]> {
 export async function vote (id: string, type: string) : Promise<Post[]> {
   try {
     const data = await put(relativePath + `vote/${id}/type/${type}`, {})
-    return data.data as Post[]
+    return data as Post[]
   } catch (err) {
     console.log(err)
   }
