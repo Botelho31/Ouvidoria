@@ -38,7 +38,7 @@ const ExploreScreen: FC = () => {
     const children = []
     for (let index = 0; index < noticias.length; index++) {
       const noticia = noticias[index]
-      children.push(<NewsCell title={noticia.title} imageURL=''/>)
+      children.push(<NewsCell title={noticia.title} imageURL={noticia.bannerImageUrl}/>)
     }
     return children
   }
@@ -54,9 +54,9 @@ const ExploreScreen: FC = () => {
 
   function getCommunityDesc () {
     const children = []
-    for (let index = 0; index < communityAsc.length; index++) {
+    for (let index = 0; index < communityDesc.length; index++) {
       const element = communityDesc[index]
-      children.push(<ScrollCell title={element.name} numberColor={StyleColors.alert} number={String(index + 1)} imageURL={element.profileImageUrl}/>)
+      children.push(<ScrollCell title={element.name} numberColor={StyleColors.error} number={String(index + 1)} imageURL={element.profileImageUrl}/>)
     }
     return children
   }
@@ -83,7 +83,7 @@ const ExploreScreen: FC = () => {
       <Margin marginTop='24px'>
         <Header3 color={StyleColors.primary}>Órgãos destaque em resolução de problemas:</Header3>
         <Margin marginTop='8px'>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ height: 120 }}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ height: 150 }}>
           {getCommunityAsc()}
         </ScrollView>
         </Margin>
@@ -91,7 +91,7 @@ const ExploreScreen: FC = () => {
       <Margin marginTop='24px'>
         <Header3 color={StyleColors.primary}>Órgãos menos resolutivos (30 dias):</Header3>
         <Margin marginTop='8px'>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ height: 120 }}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ height: 150 }}>
           {getCommunityDesc()}
         </ScrollView>
         </Margin>

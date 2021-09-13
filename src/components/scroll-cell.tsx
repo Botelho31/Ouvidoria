@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 })
 
 const ScrollCellStyle = styled(Flexbox)`
-  height: 136px;
+  height: 144px;
   width: 88px;
   background-color: ${StyleColors.lightGray};
   align-items: center;
@@ -22,18 +22,19 @@ const ScrollCellStyle = styled(Flexbox)`
   border-radius: 10px;
   flex-direction: column;
   padding: 14px 2px;
+  margin-right: 10px;
 `
 
 const ImageStyle = styled(Image)`
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   border-radius: 10px;
   background-color: white;
 `
 
 const ImageBackgroundStyle = styled(View)`
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   border-radius: 10px;
   background-color: white;
 `
