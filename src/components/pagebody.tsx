@@ -11,7 +11,7 @@ const PageBody: FC<PageBodyProps> = (props: PageBodyProps) => {
   return (
     <SafeAreaView style={{ display: 'flex', width: 375, marginRight: 'auto', marginLeft: 'auto' }}>
       <Header isSearchbar={false}/>
-      <ScrollView style={{ marginBottom: 60 }}>
+      <ScrollView >
           {props.children}
       </ScrollView>
       <Footer />
