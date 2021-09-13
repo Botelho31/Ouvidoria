@@ -71,7 +71,7 @@ const TypeDropdown: FC<TypeDropdownProps> = (props: TypeDropdownProps) => {
     TypeDropdownRef.current.measure((fx, fy, width, height, px, py) => {
       setCurrentPos({ x: px, y: py })
     })
-  }, [])
+  }, [isOpen])
 
   function getOptions () {
     const children = []

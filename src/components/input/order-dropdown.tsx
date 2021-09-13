@@ -71,7 +71,7 @@ const OrderDropdown: FC<OrderDropdownProps> = (props: OrderDropdownProps) => {
     OrderDropdownRef.current.measure((fx, fy, width, height, px, py) => {
       setCurrentPos({ x: px, y: py })
     })
-  }, [])
+  }, [isOpen])
 
   function getOptions () {
     const children = []
