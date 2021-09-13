@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Image, ImageSourcePropType, TouchableOpacity } from 'react-native'
+import { Image, ImageSourcePropType, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components'
 import Post from '../../infra/models/post'
 import { Flexbox, Header4, Margin, StyleColors } from '../../styles'
@@ -8,12 +8,20 @@ import CommentButton from './comment-button'
 import CommentCell from './comment-cell'
 import DateCell from './date-cell'
 import UpvoteButton from './upvote-button'
+import CommentInput from './comment-input'
 
 const Background = styled(Flexbox)`
   width: 335px;
   margin-top: 8px;
   border-radius: 10px;
   background-color: ${StyleColors.lightGray};
+`
+
+const Line = styled(View)`
+  alignSelf: stretch;
+  margin-top: 2px;
+  height: 1px;
+  background-color: #C4C4C4;;
 `
 
 const CommentSpace = styled(Flexbox)`
@@ -104,6 +112,8 @@ const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
             </Flexbox>
           </Margin>
         </Margin>
+        <Line/>
+        <CommentInput/>
         {getComments()}
       </CommentSpace>
     </Background>

@@ -31,7 +31,7 @@ interface CommentButtonProps{
 }
 
 const CommentButton: FC<CommentButtonProps> = (props: CommentButtonProps) => {
-  const text = props.commentNumber <= 1 ? props.commentNumber + 'comentário' : props.commentNumber + 'comentários'
+  const text = props.commentNumber <= 1 ? props.commentNumber + ' comentário' : props.commentNumber + ' comentários'
   return (
     <Background onPress={() => { console.log('Clicado') } } width={props.width}>
       <Icon source={require('../../assets/posts/comment-icon.png')}></Icon>
