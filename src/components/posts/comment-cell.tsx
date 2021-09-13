@@ -7,6 +7,7 @@ import CardHeader from '../../styles/typography/card-header'
 import CommentButton from './comment-button'
 import DateCell from './date-cell'
 import UpvoteButton from './upvote-button'
+import CommentInput from './comment-input'
 
 const Background = styled(Flexbox)`
   alignSelf: stretch;
@@ -60,7 +61,6 @@ const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
   }
   return (
     <Background flexDirection='column'>
-      <Line/>
       <CommentSpace flexDirection='column' verticalAlign='flex-start'>
         <Flexbox>
           <ProfileImage source={require('../../assets/posts/profile-image.png')}/>
@@ -81,6 +81,8 @@ const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
           </Margin>
         </Margin>
       </CommentSpace>
+      <Line/>
+      <CommentInput/>
       <Margin marginLeft='32px'>
         {getComment()}
       </Margin>
