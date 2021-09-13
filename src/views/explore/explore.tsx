@@ -7,7 +7,7 @@ import { Header1, StyleColors, Margin, Header4, Header3 } from '../../styles'
 import styled from 'styled-components'
 import Community from '../../infra/models/community'
 import { getSorted } from '../../infra/service/community-service'
-import { getSortedPost } from '../../infra/service/post-service'
+import { getAll } from '../../infra/service/post-service'
 import Post from '../../infra/models/post'
 import PostCell from '../../components/posts/post-cell'
 
@@ -28,7 +28,7 @@ const ExploreScreen: FC = () => {
       setNoticias(noticiasArray)
       setCommunityAsc(await getSorted(true))
       setCommunityDesc(await getSorted(false))
-      setPosts(await getSortedPost(true))
+      setPosts(await getAll())
     }
 
     loadData()
@@ -47,7 +47,7 @@ const ExploreScreen: FC = () => {
     const children = []
     for (let index = 0; index < communityAsc.length; index++) {
       const element = communityAsc[index]
-      children.push(<ScrollCell title={element.name} numberColor={StyleColors.success} number={String(index + 1)} imageURL={element.profileImageUrl}/>)
+      children.push(<ScrollCell title={element.name} numberColor={StyleColors.success} number={String(index + 1) + 'º'} imageURL={element.profileImageUrl}/>)
     }
     return children
   }
@@ -56,7 +56,7 @@ const ExploreScreen: FC = () => {
     const children = []
     for (let index = 0; index < communityDesc.length; index++) {
       const element = communityDesc[index]
-      children.push(<ScrollCell title={element.name} numberColor={StyleColors.error} number={String(index + 1)} imageURL={element.profileImageUrl}/>)
+      children.push(<ScrollCell title={element.name} numberColor={StyleColors.error} number={String(index + 1) + 'º'} imageURL={element.profileImageUrl}/>)
     }
     return children
   }
