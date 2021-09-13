@@ -11,7 +11,7 @@ interface PageBodyProps {
 
 const PageBody: FC<PageBodyProps> = (props: PageBodyProps) => {
   return (
-    <SafeAreaView style={{ display: 'flex' }}>
+    <SafeAreaView style={{ display: 'flex', width: '375px', margin: 'auto' }}>
       <Header isSearchbar={true}/>
         {props.children}
       <Footer />
