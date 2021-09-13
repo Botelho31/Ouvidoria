@@ -10,6 +10,7 @@ import Community from '../../infra/models/community'
 import styled from 'styled-components'
 import OrderDropdown from '../../components/input/order-dropdown'
 import { useParams } from 'react-router'
+import TypeDropdown from '../../components/input/type-dropdown'
 
 const Desc = styled(View)`
   justify-content: center;
@@ -102,7 +103,7 @@ const Profile: FC = () => {
         </Margin>
         <Margin marginTop='32px'>
           <Flexbox flexDirection='row'>
-          <InputDropdown placeholder="Reclamação" options={complaintTypes} style={{ width: 217 }}/>
+          <TypeDropdown placeholder="Reclamação" options={complaintTypes} style={{ width: 217 }}/>
           <Margin marginLeft='10px'>
             <OrderDropdown options={complaintTypesOrder} placeholder='Ordenar'/>
           </Margin>

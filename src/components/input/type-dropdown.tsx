@@ -10,15 +10,15 @@ const styles = StyleSheet.create({
   }
 })
 
-const OrderDropdownStyle = styled(Flexbox)`
+const TypeDropdownStyle = styled(Flexbox)`
     background-color: ${StyleColors.lightGray};
     border-radius: 10px;
-    width: 108px;
+    width: 217px;
     height: 32px;
     justify-content: center;
 `
 
-const OrderDropdownTextStyle = styled(Header3)`
+const TypeDropdownTextStyle = styled(Header3)`
     color: ${StyleColors.primary};
     text-align: left;
     font-family: 'Arial' ;
@@ -27,10 +27,10 @@ const OrderDropdownTextStyle = styled(Header3)`
     padding-left: 16px;
 `
 
-const OrderDropdownOptionStyle = styled(Text)`
+const TypeDropdownOptionStyle = styled(Text)`
     color: ${StyleColors.mediumGray};
     background-color: ${StyleColors.lightGray};
-    width: 108px;
+    width: 217px;
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 16px;
@@ -38,20 +38,20 @@ const OrderDropdownOptionStyle = styled(Text)`
     justify-content: center;
 `
 
-const OrderDropdownIconStyle = styled(Image)`
+const TypeDropdownIconStyle = styled(Image)`
     width: 16px;
     height: 16px;
     margin-top: 4px;
     margin-right: 16px;
 `
 
-const OrderDropdownScrollStyle = styled(ScrollView)`
+const TypeDropdownScrollStyle = styled(ScrollView)`
   position: absolute;
   top: 32px;
   z-index: 10000;
 `
 
-interface OrderDropdownProps {
+interface TypeDropdownProps {
   placeholder?: string,
   options: {
     value: string
@@ -59,15 +59,15 @@ interface OrderDropdownProps {
   onChange: (val: string) => void
 }
 
-const OrderDropdown: FC<OrderDropdownProps> = (props: OrderDropdownProps) => {
+const TypeDropdown: FC<TypeDropdownProps> = (props: TypeDropdownProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const [currentPos, setCurrentPos] = React.useState({ x: 0, y: 0 })
   const [currentValue, setCurrentValue] = React.useState('')
 
-  let OrderDropdownRef : React.RefObject<View> = React.useRef()
+  let TypeDropdownRef : React.RefObject<View> = React.useRef()
 
   React.useEffect(() => {
-    OrderDropdownRef.current.measure((fx, fy, width, height, px, py) => {
+    TypeDropdownRef.current.measure((fx, fy, width, height, px, py) => {
       setCurrentPos({ x: px, y: py })
     })
   }, [])
@@ -81,9 +81,9 @@ const OrderDropdown: FC<OrderDropdownProps> = (props: OrderDropdownProps) => {
           setCurrentValue(props.options[i].value)
           props.onChange(props.options[i].value)
         }}>
-          <OrderDropdownOptionStyle>
+          <TypeDropdownOptionStyle>
             {props.options[i].value}
-          </OrderDropdownOptionStyle>
+          </TypeDropdownOptionStyle>
         </TouchableWithoutFeedback>
       )
     }
@@ -91,13 +91,13 @@ const OrderDropdown: FC<OrderDropdownProps> = (props: OrderDropdownProps) => {
   }
 
   return (
-    <View ref={OrderDropdownRef}>
+    <View ref={TypeDropdownRef}>
       <TouchableWithoutFeedback onPress={() => setIsOpen(!isOpen)}>
-        <OrderDropdownStyle>
-          <OrderDropdownTextStyle>{currentValue === '' ? props.placeholder : currentValue}</OrderDropdownTextStyle>
+        <TypeDropdownStyle>
+          <TypeDropdownTextStyle>{currentValue === '' ? props.placeholder : currentValue}</TypeDropdownTextStyle>
           <Spacer/>
-          <OrderDropdownIconStyle source={require('../../assets/sort-icon.png')}/>
-        </OrderDropdownStyle>
+          <TypeDropdownIconStyle source={require('../../assets/chevron-down.png')}/>
+        </TypeDropdownStyle>
       </TouchableWithoutFeedback>
         <Modal
           transparent={true}
@@ -108,11 +108,11 @@ const OrderDropdown: FC<OrderDropdownProps> = (props: OrderDropdownProps) => {
         >
           <TouchableWithoutFeedback onPress={() => setIsOpen(!isOpen)}>
             <Flexbox>
-              <OrderDropdownScrollStyle style={{ display: isOpen ? 'flex' : 'none', position: 'absolute', top: currentPos.y + 32, left: currentPos.x }}>
+              <TypeDropdownScrollStyle style={{ display: isOpen ? 'flex' : 'none', position: 'absolute', top: currentPos.y + 32, left: currentPos.x }}>
                 <Flexbox flexDirection="column">
                   {getOptions()}
                 </Flexbox>
-              </OrderDropdownScrollStyle>
+              </TypeDropdownScrollStyle>
             </Flexbox>
           </TouchableWithoutFeedback>
         </Modal>
@@ -120,4 +120,4 @@ const OrderDropdown: FC<OrderDropdownProps> = (props: OrderDropdownProps) => {
   )
 }
 
-export default OrderDropdown
+export default TypeDropdown
