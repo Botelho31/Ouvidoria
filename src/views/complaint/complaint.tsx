@@ -1,8 +1,15 @@
 import React, { FC } from 'react'
-import { View } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
+import { Header } from 'react-native/Libraries/NewAppScreen'
+import Footer from '../../components/Footer/footer'
 
 const Complaint: FC = () => {
-  return <View />
+  return (
+    <SafeAreaView style={{ display: 'flex' }}>
+      <Header isSearchbar={true}/>
+      <Footer />
+    </SafeAreaView>
+  )
 }
 
 export default Complaint

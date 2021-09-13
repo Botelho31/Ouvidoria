@@ -7,5 +7,6 @@ import NewsCell from './news-cell'
 import ScrollCell from './scroll-cell'
 import ReputationCell from './reputation-cell'
 import ProfileInfo from './profile-info'
+import PageBody from './pagebody'
 
-export { Header, SmallSearchBar, SearchBar, Dropdown, InputDropdown, NewsCell, ScrollCell, ReputationCell, ProfileInfo }
+export { Header, SmallSearchBar, SearchBar, Dropdown, InputDropdown, NewsCell, ScrollCell, ReputationCell, ProfileInfo, PageBody }

@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { NativeRouter, Route } from 'react-router-native'
-import Category from './views/category/category'
 import Complaint from './views/complaint/complaint'
 import Homepage from './views/homepage/homepage'
 import Login from './views/login/login'
@@ -12,7 +11,6 @@ import Signup from './views/signup/signup'
 const Routes: FC = () => {
   return (
     <NativeRouter>
-      <Route path="/category" component={Category} />
       <Route path="/complaint" component={Complaint} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
