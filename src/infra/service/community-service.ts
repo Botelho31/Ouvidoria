@@ -1,6 +1,4 @@
-import config from '../config'
 import Community from '../models/community'
-import axios from 'axios'
 import { get, post } from './base-service'
 
 const relativePath = 'community/'
