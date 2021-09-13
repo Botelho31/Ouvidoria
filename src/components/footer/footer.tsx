@@ -1,10 +1,9 @@
 import React, { FC } from 'react'
 import { Image, Dimensions, StatusBar, Modal, TouchableWithoutFeedback, TouchableOpacity, Text } from 'react-native'
-import { Link } from 'react-router-native'
+import { Link, useHistory } from 'react-router-native'
 import styled from 'styled-components'
 import { Flexbox, Paragraph, StyleColors } from '../../styles'
 import IconLabel from './icon-label'
-import { useHistory } from 'react-router-native'
 
 const statusBar = StatusBar.currentHeight ? StatusBar.currentHeight : 0
 const windowHeight = Dimensions.get('window').height - 48 - statusBar
@@ -60,7 +59,6 @@ const complaintTypes = [
     img: require('../../assets/sugestao.png')
   }
 ]
-
 
 // Componente que se refere ao Footer inteiro, jkunto com as opções de navegação
 const Footer: FC = () => {

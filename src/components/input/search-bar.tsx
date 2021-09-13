@@ -28,6 +28,7 @@ interface SearchBarProps {
   placeholder?: string
 }
 
+// Componente criado para ser utilizado como SearchBar
 const SearchBar: FC<SearchBarProps> = (props: SearchBarProps) => {
   return (
     <SearchBarStyle style={props.style}>

@@ -10,6 +10,7 @@ const Img = styled(Image)`
   width: 375px;
 `
 
+// A tela de notícia, onde o usuario conseguira ver todas as informações daquela notícia
 const NewsScreen: FC = () => {
   const [noticias, setNoticias] = React.useState<News[]>([])
 

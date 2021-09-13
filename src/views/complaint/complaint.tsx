@@ -5,7 +5,8 @@ import { Flexbox, Header2, Paragraph, StyleColors } from '../../styles'
 import styled from 'styled-components'
 import config from '../../infra/config'
 import { useHistory, useParams } from 'react-router-native'
-import { getById } from '../../infra/service/community-service'
+import { getById, getSorted } from '../../infra/service/community-service'
+import { create } from '../../infra/service/post-service'
 
 const complaintTypes = [
   {
@@ -70,25 +71,35 @@ const Complaint: FC = () => {
 
   const [type, setType] = React.useState('')
   const [community, setCommunity] = React.useState(null)
-  const [contributionType] = React.useState(false)
+  const [communityTypes, setCommunityTypes] = React.useState([])
+
   const history = useHistory()
-
   const params = useParams()
-
   React.useEffect(() => {
     setType(params.type)
     async function loadCommunity () {
       const data = await getById(params.id)
       setCommunity(data)
     }
-    if (params.type === 'community') {
+    async function loadCommunityTypes () {
+      const data = await getSorted(true)
+      let types = []
+      for(let i = 0; i < data.length; i ++){
+        types.push({ value: data[i].name, id: data[i].id })
+      }
+      console.log(types)
+      setCommunityTypes(types)
+    }
+    if (params.type === 'Contribuição') {
       loadCommunity()
+    } else {
+      loadCommunityTypes()
     }
   }, [])
 
   function getProfileImage () {
     switch (type) {
-      case 'community':
+      case 'Contribuição':
         return <TitleCardImage source={ { uri: community.profileImageUrl }}/>
       case 'Elogio':
         return < TitleCardImage source={require('../../assets/elogio.png')} />
@@ -108,12 +119,12 @@ const Complaint: FC = () => {
   function getTitleCard () {
     return (
       <TitleCard>
-        <TitleCardImageBackground style={[styles.shadowStyle]}>
+        <TitleCardImageBackground style={[styles.shadowStyle, { borderRadius: type !== 'Contribuição' ? 34.5 : 10 }]}>
           {getProfileImage()}
         </TitleCardImageBackground>
       <Flexbox flexDirection="column" verticalAlign="flex-start" style={{ marginRight: 20 }}>
         <Header2 color={StyleColors.primary} style={{ marginBottom: 10 }}>
-          Reclamação
+          {type}
         </Header2>
         <Paragraph color={StyleColors.mediumGray}>
           Caso queira fazer um elogio ou denúncia, clique aqui.
@@ -128,18 +139,37 @@ const Complaint: FC = () => {
     if (!user) {
       return
     }
-    const post = {
-      idCommunity: communityVal,
-      communityName: communityVal,
-      userName: user.name,
-      idUser: user.email,
-      title: titleVal,
-      body: bodyVal,
-      status: 'NÃO_RESPONDIDA',
-      type: typeVal,
-      anonymous: anonymousVal
+    if (type !== 'Contribuição') {
+      const post = {
+        idCommunity: communityTypes[0].id,
+        communityName: communityTypes[0].value,
+        userName: user.name,
+        idUser: user.email,
+        title: titleVal,
+        body: bodyVal,
+        status: 'NÃO_RESPONDIDA',
+        type: type,
+        anonymous: anonymousVal
+      }
+      console.log(post)
+      await create(post)
+      history.push('/profile/' + community.id)
+    } else {
+      const post = {
+        idCommunity: community.id,
+        communityName: community.name,
+        userName: user.name,
+        idUser: user.email,
+        title: titleVal,
+        body: bodyVal,
+        status: 'NÃO_RESPONDIDA',
+        type: typeVal,
+        anonymous: anonymousVal
+      }
+      console.log(post)
+      await create(post)
+      history.push('/profile/' + community.id)
     }
-    console.log(post)
   }
 
   return (
@@ -149,15 +179,13 @@ const Complaint: FC = () => {
       <Flexbox flexDirection="column" verticalAlign="flex-start" style={{ marginLeft: 20, marginRight: 20 }}>
         <InputSwitch onChange={(val) => setAnonymousVal(val)} text="Esta denúncia deve ser anônima"/>
         <Margin/>
-        <InputDropdown onChange={(val) => setCommunityVal(val)} placeholder="Escolha um orgão" label="Qual órgão está relacionado ao ocorrido?" options={complaintTypes}/>
+        {type !== 'Contribuição' ? <InputDropdown onChange={(val) => setCommunityVal(val)} placeholder="Escolha um orgão" label="Qual órgão está relacionado ao ocorrido?" options={communityTypes}/> : <InputDropdown onChange={(val) => setCommunityVal(val)} placeholder="Escolha um tipo" label="Qual sera a contribuição feita?" options={complaintTypes}/> }
         <Margin/>
         <InputTextArea onChange={(val) => setTitleVal(val)} placeholder="Escreva um titulo" type="" title="Título" check/>
         <Margin/>
         <InputTextArea onChange={(val) => setBodyVal(val)} placeholder="Escreva um texto" type="texto" title="Texto" check/>
         <Margin/>
         <Flexbox flexDirection="column" style={{ width: '100%' }}>
-          <InputImage text="Inserir arquivo em anexo"/>
-          <Margin/>
           <PrimaryButton onPress={createPost} text="Enviar contribuição" width={157}/>
           <Margin/>
           <SecondaryButton onPress={() => history.push('/')} text="Cancelar" width={157}/>

@@ -31,6 +31,7 @@ interface InputLabelProps{
   onChange: (val: string) => void
 }
 
+// Componente utilizado por formulário que é um simples input com uma label em cima, caracteristica da hierarquia visual
 const InputLabel: FC<InputLabelProps> = (props: InputLabelProps) => {
   return (
     <Background style={props.style} flexDirection='column'>

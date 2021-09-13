@@ -1,3 +1,4 @@
+// Estrutuda de um comentário
 export default interface Comment {
   id: string
   idUser: string

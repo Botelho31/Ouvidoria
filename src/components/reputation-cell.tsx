@@ -38,6 +38,7 @@ interface ReputationCellProps {
   color: string
 }
 
+// Celula de reputação que é utilizada na tela de perfil
 const ReputationCell: FC<ReputationCellProps> = (props: ReputationCellProps) => {
   return (
     <ReputationCellStyle>

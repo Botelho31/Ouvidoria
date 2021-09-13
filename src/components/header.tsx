@@ -39,6 +39,7 @@ interface HeaderProps {
   isSearchbar: boolean
 }
 
+// Componente que faz o papel de header do site, além disso, contem dois estádos
 const Header: FC<HeaderProps> = (props: HeaderProps) => {
   return (
     <HeaderStyle style={styles.headerStyle}>

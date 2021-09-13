@@ -45,6 +45,7 @@ interface ScrollCellProps {
   imageURL: string
 }
 
+// Atua como uma célula de noticias e de comunidades
 const ScrollCell: FC<ScrollCellProps> = (props: ScrollCellProps) => {
   return (
     <ScrollCellStyle>

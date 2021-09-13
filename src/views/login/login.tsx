@@ -13,6 +13,7 @@ const BannerStyle = styled(Flexbox)`
   background-color: white;
 `
 
+// A tela de login
 const Login: FC = () => {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')

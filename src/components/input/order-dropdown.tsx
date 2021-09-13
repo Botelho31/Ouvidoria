@@ -59,6 +59,7 @@ interface OrderDropdownProps {
   onChange: (val: string) => void
 }
 
+// Componente que recebe um array e mostra as opções em formato de dropdown, com um iconezinho de ordenar no final da view
 const OrderDropdown: FC<OrderDropdownProps> = (props: OrderDropdownProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const [currentPos, setCurrentPos] = React.useState({ x: 0, y: 0 })

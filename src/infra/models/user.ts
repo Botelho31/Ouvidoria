@@ -1,3 +1,4 @@
+// Estrutuda de um usuário
 export default interface User {
   name: string
   email: string

@@ -30,6 +30,7 @@ interface CommentButtonProps{
   width: number
 }
 
+// Componente que é o botão de número de comentários
 const CommentButton: FC<CommentButtonProps> = (props: CommentButtonProps) => {
   const text = props.commentNumber <= 1 ? props.commentNumber + ' comentário' : props.commentNumber + ' comentários'
   return (

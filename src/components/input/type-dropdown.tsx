@@ -59,6 +59,7 @@ interface TypeDropdownProps {
   onChange: (val: string) => void
 }
 
+// Componente que utiliza o dropDown e permite que o usuário também digite a fim de pesquisar dentro do dropdown
 const TypeDropdown: FC<TypeDropdownProps> = (props: TypeDropdownProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const [currentPos, setCurrentPos] = React.useState({ x: 0, y: 0 })

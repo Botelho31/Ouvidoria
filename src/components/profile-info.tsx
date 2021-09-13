@@ -53,6 +53,7 @@ interface ProfileInfoProps {
   idCommunity: string
 }
 
+// Atua como a parte superior na tela de perfil, onde mostra a imagem principal e o banner de fundo
 const ProfileInfo: FC<ProfileInfoProps> = (props: ProfileInfoProps) => {
   return (
     <ProfileInfoStyle>

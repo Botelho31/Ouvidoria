@@ -40,6 +40,7 @@ interface InputTextAreaProps{
   onChange: (val: string) => void
 }
 
+// Componente utilizado por formulário que permite que o usuário tenha um espaço maior para escrever
 const InputTextArea: FC<InputTextAreaProps> = (props: InputTextAreaProps) => {
   const fontSize = props.type === 'texto' ? '12px' : '14px'
   const weight = props.type === 'texto' ? 400 : 700

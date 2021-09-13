@@ -50,6 +50,7 @@ interface CommentCellProps{
   onPost: () => void
 }
 
+// Componente que é a celula de comentário de um post
 const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
   const [commentData, setCommentData] = React.useState(props.comment)
 

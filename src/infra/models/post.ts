@@ -1,5 +1,7 @@
 import Comment from './comment'
 
+
+// Estrutuda de um post
 export default interface Post {
   id: string
   idCommunity: string

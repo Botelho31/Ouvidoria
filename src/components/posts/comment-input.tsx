@@ -35,6 +35,7 @@ interface CommentInputProps{
   onPost: () => void
 }
 
+// Uma view um pouco mais simples, que é a caixa de resposta dentro do comentário ou post.
 const CommentInput: FC<CommentInputProps> = (props: CommentInputProps) => {
   const [currentValue, setCurrentValue] = React.useState('')
 

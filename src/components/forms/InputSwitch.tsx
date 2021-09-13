@@ -21,6 +21,7 @@ interface InputSwitchProps{
   onChange: (val: boolean) => void
 }
 
+// Componente utilizado por formulário que é um simples input com um botão de switch
 const InputSwitch: FC<InputSwitchProps> = (props: InputSwitchProps) => {
   const [isSelected, setIsSelected] = React.useState(false)
 

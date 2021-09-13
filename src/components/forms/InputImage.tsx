@@ -26,7 +26,7 @@ interface InputImageProps{
   text: string
 }
 
-//Componente que seleciona a imagem para fazer uma postagem, normalmente usado dentro do formulário para fazer um post.
+// Componente que seleciona a imagem para fazer uma postagem, normalmente usado dentro do formulário para fazer um post.
 const InputImage: FC<InputImageProps> = (props: InputImageProps) => {
   const [resourcePath, setResourcePath] = React.useState('')
 

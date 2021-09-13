@@ -1,3 +1,4 @@
+// Estrutuda de notícias
 export default interface News {
   id: string
   date: string

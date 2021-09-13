@@ -7,6 +7,7 @@ import { getById } from '../../infra/service/post-service'
 import PostCell from '../../components/posts/post-cell'
 import { useParams } from 'react-router'
 
+// A tela de threads do aplicativo, onde o usuário é permitido responder comentarios e comentar em um post
 const Threads: FC = () => {
   const postId = '10863071365431984'
   const [post, setPost] = React.useState<Post | null>(null)

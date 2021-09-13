@@ -14,6 +14,7 @@ const NewsCellStyle = styled(Flexbox)`
   justify-content: flex-start;
   border-radius: 10px;
   flex-direction: column;
+  margin-right: 10px;
 `
 
 const ImageStyle = styled(Image)`
@@ -28,6 +29,7 @@ interface NewsCellProps {
   imageURL: string
 }
 
+// Componente que é a celula de notícia
 const NewsCell: FC<NewsCellProps> = (props: NewsCellProps) => {
   return (
     <NewsCellStyle>

@@ -10,6 +10,7 @@ import PostCell from '../../components/posts/post-cell'
 import config from '../../infra/config'
 import { useHistory } from 'react-router'
 
+// A tela inicial do aplicativo, onde conterá algumas informações sobre quem o usuário está seguindo
 const Homepage: FC = () => {
   const [noticias, setNoticias] = React.useState<News[]>([])
   const [posts, setPosts] = React.useState<Post[]>([])
@@ -36,7 +37,7 @@ const Homepage: FC = () => {
     const children = []
     for (let index = 0; index < noticias.length; index++) {
       const noticia = noticias[index]
-      children.push(<NewsCell title={noticia.title} imageURL=''/>)
+      children.push(<NewsCell title={noticia.title} imageURL={noticia.bannerImageUrl}/>)
     }
     return children
   }

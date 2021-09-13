@@ -71,6 +71,7 @@ interface PostCellProps{
   showComments: boolean
 }
 
+// Esse componente já é um pouco mais complexo, pois é a junção de alguns outros componentes, e permite também que o usuário interaja com ele de diferentes formas.
 const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
   const [postObject, setPostObject] = React.useState(props.postInfo)
 

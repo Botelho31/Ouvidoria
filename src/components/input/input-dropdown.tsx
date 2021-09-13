@@ -59,6 +59,7 @@ interface InputDropdownProps {
   onChange: (val: string) => void
 }
 
+// Componente que recebe um array e mostra as opções em formato de dropdown junto com uma label
 const InputDropdown: FC<InputDropdownProps> = (props: InputDropdownProps) => {
   return (
     <InputDropdownStyle style={props.style}>

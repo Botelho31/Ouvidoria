@@ -59,6 +59,7 @@ interface DropdownProps {
   onChange: (val: string) => void
 }
 
+// Componente que recebe um array e mostra as opções em formato de dropdown
 const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const [currentPos, setCurrentPos] = React.useState({ x: 0, y: 0 })

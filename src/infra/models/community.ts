@@ -1,3 +1,4 @@
+// Estrutuda de uma comunidade
 export default interface Community {
   id: string
   name: string

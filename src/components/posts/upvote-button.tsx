@@ -49,6 +49,7 @@ interface UpvoteButtonProps{
   onChange: () => void
 }
 
+// Componente que permite com que o usuário consiga dar upvotes e downvotes dentro de cada um dos posts ou comentários.
 const UpvoteButton: FC<UpvoteButtonProps> = (props: UpvoteButtonProps) => {
   let likedColor = StyleColors.darkGray
   let assetLiked : ImageSourcePropType = require('../../assets/posts/vote-icon.png')

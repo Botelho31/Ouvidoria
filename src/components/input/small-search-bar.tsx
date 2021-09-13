@@ -28,6 +28,7 @@ interface SmallSearchBarProps {
   placeholder?: string
 }
 
+// Componente parecido com a search bar, porém de um tamanho menor
 const SmallSearchBar: FC<SmallSearchBarProps> = (props: SmallSearchBarProps) => {
   return (
     <SmallSearchBarStyle style={props.style}>

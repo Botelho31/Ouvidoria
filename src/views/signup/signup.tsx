@@ -109,6 +109,7 @@ const ufOptions = [
   }
 ]
 
+// A tela onde o usuário cria a sua conta
 const Signup: FC = () => {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
