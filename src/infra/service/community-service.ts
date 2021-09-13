@@ -6,7 +6,7 @@ const relativePath = 'community/'
 export async function create (community: Community): Promise<Community> {
   try {
     const data = await post(relativePath, community)
-    return data.data as Community
+    return data as Community
   } catch (err) {
     console.log(err)
   }
@@ -16,7 +16,7 @@ export async function create (community: Community): Promise<Community> {
 export async function getById (id: string) : Promise<Community> {
   try {
     const data = await get(relativePath + id)
-    return data.data as Community
+    return data as Community
   } catch (err) {
     console.log(err)
   }
@@ -26,7 +26,7 @@ export async function getById (id: string) : Promise<Community> {
 export async function getSorted (asc: boolean) : Promise<Community[]> {
   try {
     const data = await get(relativePath + `ranking/${asc}`)
-    return data.data as Community[]
+    return data as Community[]
   } catch (err) {
     console.log(err)
   }

@@ -6,8 +6,8 @@ const relativePath = 'user/'
 
 export async function signup (user: User): Promise<User> {
   try {
-    const data = await axios.post(relativePath + 'signup', user)
-    return data.data as User
+    const data = await post(relativePath + 'signup', user)
+    return data as User
   } catch (err) {
     console.log(err)
   }
@@ -20,7 +20,7 @@ export async function login (email: string, password: string): Promise<User> {
       email,
       password
     })
-    return data.data as User
+    return data as User
   } catch (err) {
     console.log(err)
   }
@@ -30,7 +30,7 @@ export async function login (email: string, password: string): Promise<User> {
 export async function community (id: string) : Promise<User> {
   try {
     const data = await put(relativePath + `community/${id}`, {})
-    return data.data as User
+    return data as User
   } catch (err) {
     console.log(err)
   }

@@ -6,7 +6,7 @@ const relativePath = 'comment/'
 export async function create (comment: Comment): Promise<Comment> {
   try {
     const data = await post(relativePath, comment)
-    return data.data as Comment
+    return data as Comment
   } catch (err) {
     console.log(err)
   }
@@ -16,7 +16,7 @@ export async function create (comment: Comment): Promise<Comment> {
 export async function vote (id: string, type: string) : Promise<Comment[]> {
   try {
     const data = await put(relativePath + `vote/${id}/type/${type}`, {})
-    return data.data as Comment[]
+    return data as Comment[]
   } catch (err) {
     console.log(err)
   }

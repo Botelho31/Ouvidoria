@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
-import { SafeAreaView, ScrollView, View } from 'react-native'
-import styled from 'styled-components'
+import { SafeAreaView, ScrollView } from 'react-native'
 import { Header } from '.'
 import Footer from './footer/footer'
 

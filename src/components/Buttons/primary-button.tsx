@@ -7,6 +7,8 @@ interface BackgroundProps{
 }
 
 const Background = styled(TouchableOpacity)<BackgroundProps>`
+  align-items: center;
+  justify-content: center;
   width: ${props => props.width}px;
   height: 32px;
   background-color: ${StyleColors.primary};
