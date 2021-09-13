@@ -41,7 +41,7 @@ const NewsScreen: FC = () => {
       <Img source={{ uri: noticias.length > 0 ? noticias[0].bannerImageUrl : '' }}/>
       <Margin marginTop='8px'>
       <Header1 style={{ marginLeft: 20, marginRight: 20 }}>{noticias.length > 0 ? noticias[0].title : ''}</Header1>
-      <Header4 style={{ marginLeft: 20, marginRight: 20 }} color={StyleColors.discreteGray}>{String(moment(noticias[0].date).format('DD/MM/YYYY - HH:mm'))}</Header4>
+      <Header4 style={{ marginLeft: 20, marginRight: 20 }} color={StyleColors.discreteGray}>{String(moment(noticias.length > 0 ? noticias[0].date : 0).format('DD/MM/YYYY - HH:mm'))}</Header4>
       </Margin>
 
       <Margin marginTop='16px'>

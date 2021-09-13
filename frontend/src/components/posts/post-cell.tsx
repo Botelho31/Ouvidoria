@@ -92,7 +92,7 @@ const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
       }
       return (<View>
         <Line/>
-        <CommentInput onPost={reloadData} idUser={postObject.idUser} idPost={postObject.idPost} />
+        <CommentInput onPost={reloadData} idUser={postObject.idUser} idPost={postObject.id} />
         {children}
       </View>)
     }
