@@ -5,7 +5,7 @@ import { Flexbox, Paragraph } from '../../styles'
 
 const Background = styled(Flexbox)`
   background-color: white;
-  width: 49px;
+  width: 52px;
   height: 41px;
   margin-top: 4px;
   margin-bottom: 3px;
