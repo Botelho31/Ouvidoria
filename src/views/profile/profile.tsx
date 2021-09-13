@@ -7,7 +7,7 @@ import { getByCommunity } from '../../infra/service/post-service'
 import PostCell from '../../components/posts/post-cell'
 import { getById } from '../../infra/service/community-service'
 import Community from '../../infra/models/community'
-import PrimaryButton from '../../components/Buttons/primary-button'
+import PrimaryButton from '../../components/buttons/primary-button'
 import styled from 'styled-components'
 import OrderDropdown from '../../components/input/order-dropdown'
 
