@@ -37,6 +37,7 @@ interface InputTextAreaProps{
   title: string
   type: string
   placeholder: string
+  onChange: (val: string) => void
 }
 
 const InputTextArea: FC<InputTextAreaProps> = (props: InputTextAreaProps) => {
@@ -46,7 +47,7 @@ const InputTextArea: FC<InputTextAreaProps> = (props: InputTextAreaProps) => {
   return (
     <Background flexDirection='column'>
       <Label>{props.title}</Label>
-      <Input placeholder={props.placeholder} multiline={true} numberOfLines={numberOfLines} minHeight={(18 * numberOfLines)} fontSize={fontSize} weight={weight} textAlignVertical="top"></Input>
+      <Input onChangeText={props.onChange} placeholder={props.placeholder} multiline={true} numberOfLines={numberOfLines} minHeight={(18 * numberOfLines)} fontSize={fontSize} weight={weight} textAlignVertical="top"></Input>
     </Background>
   )
 }

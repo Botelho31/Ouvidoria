@@ -48,6 +48,7 @@ const DropdownIconStyle = styled(Image)`
 const DropdownScrollStyle = styled(ScrollView)`
   position: absolute;
   top: 32px;
+  z-index: 10000;
 `
 
 interface DropdownProps {
@@ -55,6 +56,7 @@ interface DropdownProps {
   options: {
     value: string
   }[]
+  onChange: (val: string) => void
 }
 
 const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
@@ -65,7 +67,10 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     const children = []
     for (let i = 0; i < props.options.length; i++) {
       children.push(
-        <TouchableWithoutFeedback onPress={() => setCurrentValue(props.options[i].value)}>
+        <TouchableWithoutFeedback onPress={() => {
+          setCurrentValue(props.options[i].value)
+          props.onChange(props.options[i].value)
+        }}>
           <DropdownOptionStyle>
             {props.options[i].value}
           </DropdownOptionStyle>

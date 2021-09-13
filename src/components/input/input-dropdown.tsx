@@ -56,13 +56,14 @@ interface InputDropdownProps {
     value: string
   }[],
   label?: string
+  onChange: (val: string) => void
 }
 
 const InputDropdown: FC<InputDropdownProps> = (props: InputDropdownProps) => {
   return (
     <InputDropdownStyle style={props.style}>
       <Header4 style={styles.headerStyle} color={StyleColors.primary}>{props.label}</Header4>
-      <Dropdown options={props.options} placeholder={props.placeholder}/>
+      <Dropdown onChange={props.onChange} options={props.options} placeholder={props.placeholder}/>
     </InputDropdownStyle>
   )
 }

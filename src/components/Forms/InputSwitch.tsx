@@ -18,6 +18,7 @@ const SwitchInput = styled(Switch)`
 
 interface InputSwitchProps{
   text: string
+  onChange: (val: boolean) => void
 }
 
 const InputSwitch: FC<InputSwitchProps> = (props: InputSwitchProps) => {
@@ -25,6 +26,7 @@ const InputSwitch: FC<InputSwitchProps> = (props: InputSwitchProps) => {
 
   function updateSelect () {
     setIsSelected(!isSelected)
+    props.onChange(!isSelected)
   }
 
   return (
