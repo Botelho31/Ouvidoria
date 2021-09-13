@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+    nodejs:
+        build:
+            context: ./
+        image: ${PROJECT}-node
+        container_name: ${PROJECT}-node
+        restart: unless-stopped
+        ports:
+            - "80:80"
+            - "8080:8080"
+        environment: 
+            - BUILD
+            - PRODUCTION=${PROD}
+        networks:
+            - app-network
+volumes:
+    web-root:
+    certbot-listener:
+    certbot-etc:
+    certbot-var:
+    
+networks:
+    app-network:
+        driver: bridge
+          

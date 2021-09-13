@@ -1,0 +1,6 @@
+module Pods_Ouvidoria_OuvidoriaTests {
+  umbrella header "Pods-Ouvidoria-OuvidoriaTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

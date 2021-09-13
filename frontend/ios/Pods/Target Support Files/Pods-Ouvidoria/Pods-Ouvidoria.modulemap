@@ -1,0 +1,6 @@
+module Pods_Ouvidoria {
+  umbrella header "Pods-Ouvidoria-umbrella.h"
+
+  export *
+  module * { export * }
+}
