@@ -1,12 +1,13 @@
 import config from '../config'
 import News from '../models/news'
 import axios from 'axios'
+import { get, post } from './base-service'
 
-const baseIP = config.baseIP + 'news/'
+const relativePath = 'news/'
 
 export async function create (news: News): Promise<News> {
   try {
-    const data = await axios.post(baseIP, news)
+    const data = await post(relativePath, news)
     return data.data as News
   } catch (err) {
     console.log(err)
@@ -16,7 +17,7 @@ export async function create (news: News): Promise<News> {
 
 export async function list () : Promise<News[]> {
   try {
-    const data = await axios.get(baseIP + 'list')
+    const data = await get(relativePath)
     return data.data as News[]
   } catch (err) {
     console.log(err)

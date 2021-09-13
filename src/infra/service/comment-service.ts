@@ -1,12 +1,13 @@
 import config from '../config'
 import Comment from '../models/comment'
 import axios from 'axios'
+import { post, put } from './base-service'
 
-const baseIP = config.baseIP + 'comment/'
+const relativePath = 'comment/'
 
 export async function create (comment: Comment): Promise<Comment> {
   try {
-    const data = await axios.post(baseIP, comment)
+    const data = await post(relativePath, comment)
     return data.data as Comment
   } catch (err) {
     console.log(err)
@@ -16,7 +17,7 @@ export async function create (comment: Comment): Promise<Comment> {
 
 export async function vote (id: string, type: string) : Promise<Comment[]> {
   try {
-    const data = await axios.put(baseIP + `vote/${id}/type/${type}`)
+    const data = await put(relativePath + `vote/${id}/type/${type}`, {})
     return data.data as Comment[]
   } catch (err) {
     console.log(err)

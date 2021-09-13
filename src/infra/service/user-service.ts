@@ -1,12 +1,13 @@
 import config from '../config'
 import User from '../models/user'
 import axios from 'axios'
+import { post, put } from './base-service'
 
-const baseIP = config.baseIP + 'user/'
+const relativePath = 'user/'
 
 export async function signup (user: User): Promise<User> {
   try {
-    const data = await axios.post(baseIP + 'signup', user)
+    const data = await axios.post(relativePath + 'signup', user)
     return data.data as User
   } catch (err) {
     console.log(err)
@@ -16,7 +17,7 @@ export async function signup (user: User): Promise<User> {
 
 export async function login (email: string, password: string): Promise<User> {
   try {
-    const data = await axios.post(baseIP + 'login', {
+    const data = await post(relativePath + 'login', {
       email,
       password
     })
@@ -29,7 +30,7 @@ export async function login (email: string, password: string): Promise<User> {
 
 export async function community (id: string) : Promise<User> {
   try {
-    const data = await axios.put(baseIP + `community/${id}`)
+    const data = await put(relativePath + `community/${id}`, {})
     return data.data as User
   } catch (err) {
     console.log(err)

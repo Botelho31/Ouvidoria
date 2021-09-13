@@ -1,12 +1,13 @@
 import config from '../config'
 import Community from '../models/community'
 import axios from 'axios'
+import { get, post } from './base-service'
 
-const baseIP = config.baseIP + 'community/'
+const relativePath = 'community/'
 
 export async function create (community: Community): Promise<Community> {
   try {
-    const data = await axios.post(baseIP, community)
+    const data = await post(relativePath, community)
     return data.data as Community
   } catch (err) {
     console.log(err)
@@ -16,7 +17,7 @@ export async function create (community: Community): Promise<Community> {
 
 export async function getById (id: string) : Promise<Community> {
   try {
-    const data = await axios.get(baseIP + id)
+    const data = await get(relativePath + id)
     return data.data as Community
   } catch (err) {
     console.log(err)
@@ -26,7 +27,7 @@ export async function getById (id: string) : Promise<Community> {
 
 export async function getSorted (asc: boolean) : Promise<Community[]> {
   try {
-    const data = await axios.get(baseIP + `ranking/${asc}`)
+    const data = await get(relativePath + `ranking/${asc}`)
     return data.data as Community[]
   } catch (err) {
     console.log(err)
