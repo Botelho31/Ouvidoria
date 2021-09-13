@@ -45,7 +45,7 @@ export async function getByCommunity (id: string) : Promise<Post[]> {
   return []
 }
 
-export async function getSorted (asc: boolean) : Promise<Post[]> {
+export async function getSortedPost (asc: boolean) : Promise<Post[]> {
   try {
     const data = await get(relativePath + `ranking/${asc}`)
     return data as Post[]
