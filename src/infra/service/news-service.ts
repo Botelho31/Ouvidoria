@@ -6,7 +6,7 @@ const relativePath = 'news/'
 export async function create (news: News): Promise<News> {
   try {
     const data = await post(relativePath, news)
-    return data.data as News
+    return data as News
   } catch (err) {
     console.log(err)
   }
@@ -15,8 +15,8 @@ export async function create (news: News): Promise<News> {
 
 export async function list () : Promise<News[]> {
   try {
-    const data = await get(relativePath)
-    return data.data as News[]
+    const data = await get(relativePath + 'list')
+    return data as News[]
   } catch (err) {
     console.log(err)
   }

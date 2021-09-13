@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Image, ImageSourcePropType, TouchableOpacity } from 'react-native'
 import styled from 'styled-components'
 import Post from '../../infra/models/post'
-import { Flexbox, Header4, Margin, Spacer, StyleColors } from '../../styles'
+import { Flexbox, Header4, Margin, StyleColors } from '../../styles'
 import CardHeader from '../../styles/typography/card-header'
 import CommentButton from './comment-button'
 import CommentCell from './comment-cell'
@@ -55,51 +55,51 @@ const Text = styled(Header4)`
 `
 
 interface PostCellProps{
-  postInfo?: Post
-  resp?: boolean
+  postInfo: Post
   showComments: boolean
 }
 
 const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
   function getComments () {
     const children : Element[] = []
-    if (props.postInfo?.comment) {
-      for (let index = 0; index < props.postInfo?.comment.length; index++) {
-        const comment = props.postInfo?.comment[index]
+    if (props.postInfo?.comments) {
+      for (let index = 0; index < props.postInfo?.comments.length; index++) {
+        const comment = props.postInfo?.comments[index]
         children.push(<CommentCell comment={comment}/>)
       }
       return (children)
     }
   }
   let statusImage : ImageSourcePropType = require('../../assets/posts/status/andamento.png')
-  if (props.resp !== null) {
-    if (props.resp === true) {
+  if (props.postInfo.status !== 'EM_ANDAMENTO') {
+    if (props.postInfo.status === 'RESPONDIDO') {
       statusImage = require('../../assets/posts/status/resp.png')
-    } else if (props.resp === false) {
+    } else if (props.postInfo.status === 'NAO_RESPONDIDO') {
       statusImage = require('../../assets/posts/status/nao-resp.png')
     }
   }
+
   return (
     <Background flexDirection='column'>
       <CommentSpace flexDirection='column' verticalAlign='flex-start'>
         <Flexbox>
           <ProfileImage source={require('../../assets/posts/unb-image.png')}/>
           <TouchableOpacity onPress={() => console.log('clicou no nick')}>
-            <ProfileName>Universidade de Brasília</ProfileName>
+            <ProfileName>{props.postInfo.communityName}</ProfileName>
           </TouchableOpacity>
         </Flexbox>
-        <TitleInfo marginLeft='16px' marginTop='8px' marginBottom='4px'>
-          <TitlePost>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus</TitlePost>
+        <TitleInfo marginLeft='16px' marginTop='20px' marginBottom='4px'>
+          <TitlePost>{props.postInfo.title}</TitlePost>
           <Margin marginTop='8px'>
             <DateCell>Publicado por anônimo | 10/09/2021 - 17:24</DateCell>
           </Margin>
         </TitleInfo>
         <Margin marginTop='4px'marginLeft='16px' marginRight='24px'>
-          <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse egestas commodo, maecenas in egestas etiam sapien enim. Ac amet sapien suscipit mauris convallis venenatis suspendisse massa nunc cabe mais uma linha.</Text>
+          <Text>{props.postInfo.body}</Text>
           <Margin marginTop='8px' marginBottom='24px'>
             <Flexbox>
-              <UpvoteButton voteNumber={45} width={80}/>
-              <CommentButton commentNumber={1} width={112}/>
+              <UpvoteButton voteNumber={props.postInfo.upvotes.length - props.postInfo.downvotes.length} width={80}/>
+              <CommentButton commentNumber={props.postInfo.comments.length} width={112}/>
               <Status source={statusImage}/>
             </Flexbox>
           </Margin>

@@ -1,14 +1,57 @@
 import React, { FC } from 'react'
-import { SafeAreaView, ScrollView, View } from 'react-native'
-import { Header, InputDropdown, PageBody, ProfileInfo, ReputationCell, ScrollCell } from '../../components'
-import Footer from '../../components/Footer/footer'
-import OrderDropdown from '../../components/input/order-dropdown'
-import { Header3, StyleColors } from '../../styles'
+import { View, ScrollView } from 'react-native'
+import { PageBody, NewsCell, SearchBar } from '../../components'
+import { list } from '../../infra/service/news-service'
+import News from '../../infra/models/news'
+import { Header1, StyleColors } from '../../styles'
+import Post from '../../infra/models/post'
+import { getByUser } from '../../infra/service/post-service'
+import PostCell from '../../components/posts/post-cell'
 
 const Homepage: FC = () => {
+  const [noticias, setNoticias] = React.useState<News[]>([])
+  const [posts, setPosts] = React.useState<Post[]>([])
+
+  React.useEffect(() => {
+    async function loadData () {
+      const noticiasArray = await list()
+      setNoticias(noticiasArray)
+      setPosts(await getByUser())
+    }
+
+    loadData()
+  }, [])
+
+  function getNoticias () {
+    const children = []
+    for (let index = 0; index < noticias.length; index++) {
+      const noticia = noticias[index]
+      children.push(<NewsCell title={noticia.title} imageURL=''/>)
+    }
+    return children
+  }
+
+  function getPosts () {
+    const children = []
+    for (let index = 0; index < posts.length; index++) {
+      const post = posts[index]
+      children.push(<PostCell postInfo={post} showComments={false}/>)
+    }
+    return children
+  }
+
   return (
     <PageBody>
-      <View style={{ backgroundColor: 'black' }}></View>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ height: 120 }}>
+        {getNoticias()}
+      </ScrollView>
+      <View style={{ marginRight: 20, marginLeft: 20, width: 335 }}>
+      <Header1 color={StyleColors.primary}>Veja a reputação de um órgão público</Header1>
+      <SearchBar style={{ marginTop: 8 }} placeholder='Pesquise um órgão público'/>
+      <View style={{ marginRight: 40, marginBottom: 20 }}>
+        {getPosts()}
+      </View>
+      </View>
     </PageBody>
   )
 }
