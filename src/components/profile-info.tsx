@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
-import { Image, StyleSheet, View } from 'react-native'
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native'
 import styled from 'styled-components'
+import { community } from '../infra/service/user-service'
 import { Flexbox, Header2, Header3, Spacer, StyleColors } from '../styles'
 
 const styles = StyleSheet.create({
@@ -55,20 +56,26 @@ interface ProfileInfoProps {
 
 // Atua como a parte superior na tela de perfil, onde mostra a imagem principal e o banner de fundo
 const ProfileInfo: FC<ProfileInfoProps> = (props: ProfileInfoProps) => {
+  async function follow () {
+    await community(props.idCommunity)
+  }
+
   return (
     <ProfileInfoStyle>
       <BannerImageStyle source={{
         uri: props.bannerImageURL
       }}/>
-      <Flexbox style={{ height: 56, justifyContent: 'flex-start' }}>
-        <FollowButton style={styles.shadowStyle}>
-          <ProfileImageStyle source={{
-            uri: props.profileImageURL
-          }}/>
-          <AddIcon source={require('../assets/add-icon.png')}/>
-        </FollowButton>
-        <Header2 color={StyleColors.darkGray}>{props.title}</Header2>
-      </Flexbox>
+        <Flexbox style={{ height: 56, justifyContent: 'flex-start' }}>
+          <TouchableOpacity onPress={follow}>
+            <FollowButton style={styles.shadowStyle}>
+              <ProfileImageStyle source={{
+                uri: props.profileImageURL
+              }}/>
+              <AddIcon source={require('../assets/add-icon.png')}/>
+            </FollowButton>
+          </TouchableOpacity>
+          <Header2 color={StyleColors.darkGray}>{props.title}</Header2>
+        </Flexbox>
     </ProfileInfoStyle>
   )
 }
