@@ -1,9 +1,9 @@
 export default interface User {
-  username: string
+  name: string
   email: string
   password: string
   gender: string
-  age: string
+  age: number
   race: string
   uf: string
   city: string

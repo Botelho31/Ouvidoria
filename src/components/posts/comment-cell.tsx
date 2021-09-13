@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Image, View } from 'react-native'
 import styled from 'styled-components'
-import Comment from '../../models/comment'
+import Comment from '../../infra/models/comment'
 import { Flexbox, Header4, Margin, StyleColors } from '../../styles'
 import CardHeader from '../../styles/typography/card-header'
 import CommentButton from './comment-button'

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Image, ImageSourcePropType, TouchableOpacity } from 'react-native'
 import styled from 'styled-components'
-import Post from '../../models/post'
+import Post from '../../infra/models/post'
 import { Flexbox, Header4, Margin, Spacer, StyleColors } from '../../styles'
 import CardHeader from '../../styles/typography/card-header'
 import CommentButton from './comment-button'

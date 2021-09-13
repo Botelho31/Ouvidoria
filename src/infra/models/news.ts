@@ -1,6 +1,7 @@
 export default interface News {
+  id: string
   date: string
-  postOwner: string
+  idUser: string
   title: string
   body: string
   bannerImageUrl: string
