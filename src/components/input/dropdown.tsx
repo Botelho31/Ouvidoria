@@ -76,7 +76,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
     const children = []
     for (let i = 0; i < props.options.length; i++) {
       children.push(
-        <TouchableWithoutFeedback onPress={() => {
+        <TouchableWithoutFeedback key={i} onPress={() => {
           setIsOpen(!isOpen)
           setCurrentValue(props.options[i].value)
           props.onChange(props.options[i].value)

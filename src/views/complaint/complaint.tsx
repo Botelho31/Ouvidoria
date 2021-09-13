@@ -4,7 +4,8 @@ import { InputDropdown, PageBody, InputImage, InputTextArea, InputSwitch, Primar
 import { Flexbox, Header2, Paragraph, StyleColors } from '../../styles'
 import styled from 'styled-components'
 import config from '../../infra/config'
-import { useHistory } from 'react-router-native'
+import { useHistory, useParams } from 'react-router-native'
+import { getById } from '../../infra/service/community-service'
 
 const complaintTypes = [
   {
@@ -67,22 +68,48 @@ const Complaint: FC = () => {
   const [typeVal, setTypeVal] = React.useState('')
   const [anonymousVal, setAnonymousVal] = React.useState(false)
 
-  const [communityContribution, setCommunityContribution] = React.useState(false)
+  const [type, setType] = React.useState('')
+  const [community, setCommunity] = React.useState(null)
   const [contributionType] = React.useState(false)
   const history = useHistory()
 
   const params = useParams()
 
   React.useEffect(() => {
-    if (params.type === 'community') {
-      setCommunityContribution(true)
+    setType(params.type)
+    async function loadCommunity () {
+      const data = await getById(params.id)
+      setCommunity(data)
     }
-  },[])
+    if (params.type === 'community') {
+      loadCommunity()
+    }
+  }, [])
+
+  function getProfileImage () {
+    switch (type) {
+      case 'community':
+        return <TitleCardImage source={ { uri: community.profileImageUrl }}/>
+      case 'Elogio':
+        return < TitleCardImage source={require('../../assets/elogio.png')} />
+      case 'Reclamação':
+        return < TitleCardImage source={require('../../assets/reclamacao.png')} />
+      case 'Denúncia':
+        return < TitleCardImage source={require('../../assets/denuncia.png')} />
+      case 'Informação':
+        return < TitleCardImage source={require('../../assets/informacao.png')} />
+      case 'Solicitação':
+        return < TitleCardImage source={require('../../assets/solicitacao.png')} />
+      case 'Sugestão':
+        return < TitleCardImage source={require('../../assets/sugestao.png')} />
+    }
+  }
+
   function getTitleCard () {
     return (
       <TitleCard>
         <TitleCardImageBackground style={[styles.shadowStyle]}>
-          <TitleCardImage source={ { uri: 'https://pbs.twimg.com/profile_images/1069542803586326528/bhfxCFeF_400x400.jpg' }}/>
+          {getProfileImage()}
         </TitleCardImageBackground>
       <Flexbox flexDirection="column" verticalAlign="flex-start" style={{ marginRight: 20 }}>
         <Header2 color={StyleColors.primary} style={{ marginBottom: 10 }}>

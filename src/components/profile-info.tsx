@@ -37,7 +37,7 @@ const FollowButton = styled(View)`
   background-color: white;
   border-radius: 10px;
   margin-right: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `
 
 const AddIcon = styled(Image)`
@@ -49,7 +49,8 @@ const AddIcon = styled(Image)`
 interface ProfileInfoProps {
   title: string,
   bannerImageURL: string,
-  profileImageURL: string
+  profileImageURL: string,
+  idCommunity: string
 }
 
 const ProfileInfo: FC<ProfileInfoProps> = (props: ProfileInfoProps) => {

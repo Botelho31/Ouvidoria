@@ -9,7 +9,7 @@ import { getById } from '../../infra/service/community-service'
 import Community from '../../infra/models/community'
 import styled from 'styled-components'
 import OrderDropdown from '../../components/input/order-dropdown'
-import { useParams } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import TypeDropdown from '../../components/input/type-dropdown'
 
 const Desc = styled(View)`
@@ -61,6 +61,7 @@ const Profile: FC = () => {
   const [community, setCommunity] = React.useState<Community | null>(null)
   const [posts, setPosts] = React.useState<Post[]>([])
 
+  const history = useHistory()
   const params = useParams()
   React.useEffect(() => {
     async function loadData () {
@@ -80,21 +81,23 @@ const Profile: FC = () => {
     return children
   }
 
-  console.log(community)
+  function sortPosts() {
+
+  }
 
   return (
     <PageBody>
       <ScrollView>
-        <ProfileInfo title={community ? community.name : ''} bannerImageURL={community ? community.bannerImageUrl : ''} profileImageURL={community ? community.profileImageUrl : ''}/>
+        <ProfileInfo idCommunity={community.id} title={community ? community.name : ''} bannerImageURL={community ? community.bannerImageUrl : ''} profileImageURL={community ? community.profileImageUrl : ''}/>
         <Margin marginTop='8px'>
           <Flexbox flexDirection='row'>
-            <ReputationCell title='Reputação' percentage={0.75} color={StyleColors.success}/>
+            <ReputationCell title='Reputação' percentage={community?.reputation} color={StyleColors.success}/>
             <Flexbox flexDirection='column'>
               <Margin marginLeft='20px'>
-                <PrimaryButton text='Adicionar contribuição' width={157}/>
+                <PrimaryButton onPress={() => history.push(`/complaint/community/${community.id}`)} text='Adicionar contribuição' width={157}/>
                 <Desc>
                   <LabelDesc>
-                    {community ? community.desc : 'LDOAPSKDOAS OPSKAD POASPO Ddasokdpask opsadkop kasodpkaokop kko '}
+                    {community ? community.desc : ''}
                   </LabelDesc>
                 </Desc>
               </Margin>
@@ -103,9 +106,9 @@ const Profile: FC = () => {
         </Margin>
         <Margin marginTop='32px'>
           <Flexbox flexDirection='row'>
-          <TypeDropdown placeholder="Reclamação" options={complaintTypes} style={{ width: 217 }}/>
+          <TypeDropdown onChange={() => { sortPosts() }} placeholder="Reclamação" options={complaintTypes} style={{ width: 217 }}/>
           <Margin marginLeft='10px'>
-            <OrderDropdown options={complaintTypesOrder} placeholder='Ordenar'/>
+            <OrderDropdown onChange={() => { sortPosts() }} options={complaintTypesOrder} placeholder='Ordenar'/>
           </Margin>
           </Flexbox>
         </Margin>

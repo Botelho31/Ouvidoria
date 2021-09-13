@@ -25,6 +25,7 @@ interface SecondaryButtonProps{
   onPress?: () => void
 }
 
+// Botão Secundario utilizado na hierarquia da identidade visual
 const SecondaryButton: FC<SecondaryButtonProps> = (props: SecondaryButtonProps) => {
   return (
     <Background onPress={props.onPress} width={props.width}>

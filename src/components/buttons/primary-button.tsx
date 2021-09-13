@@ -28,6 +28,7 @@ interface PrimaryButtonProps{
   onPress?: () => void
 }
 
+// Botão Primário utilizado na hierarquia da identidade visual
 const PrimaryButton: FC<PrimaryButtonProps> = (props: PrimaryButtonProps) => {
   return (
     <Background style={props.style} onPress={props.onPress} width={props.width}>

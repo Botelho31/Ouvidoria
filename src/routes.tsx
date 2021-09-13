@@ -11,7 +11,7 @@ import Thread from './views/thread/thread'
 const Routes: FC = () => {
   return (
     <NativeRouter>
-      <Route path="/complaint/:type/community/:communityId" component={Complaint} />
+      <Route path="/complaint/:type/community/:id" component={Complaint} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="/profile/:id" component={Profile} />

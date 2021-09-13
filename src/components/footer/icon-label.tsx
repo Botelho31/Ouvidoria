@@ -24,6 +24,7 @@ interface IconLabelProps{
   label: string
 }
 
+// Componente que contem uma imagem do icone de navegação junto ao seu nome
 const IconLabel: FC<IconLabelProps> = (props: IconLabelProps) => {
   return (
     <Background style={props.style} flexDirection='column'>

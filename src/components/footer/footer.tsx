@@ -60,15 +60,18 @@ const complaintTypes = [
   }
 ]
 
+
+// Componente que se refere ao Footer inteiro, jkunto com as opções de navegação
 const Footer: FC = () => {
   const [isOpen, setIsOpen] = React.useState(false)
 
+  const history = useHistory()
   function getOptions () {
     const children = []
 
     for (let i = 0; i < complaintTypes.length; i += 1) {
       children.push(
-        <Link to="/complaint">
+        <Link to={`/complaint/${complaintTypes[i].value}/community/x`}>
           <Flexbox flexDirection="column" horizontalAlign="space-between" style={{ marginLeft: 5, marginRight: 5 }}>
             <Image style={{ width: 32, height: 32 }} source={complaintTypes[i].img} />
             <Paragraph color={StyleColors.primary}>{complaintTypes[i].value}</Paragraph>
@@ -82,15 +85,15 @@ const Footer: FC = () => {
   return (
     <BackgroundFooter>
       <Flexbox>
-        <Link to="/">
+        <TouchableOpacity onPress={() => { history.push('/') } }>
           <IconLabel style={{ marginLeft: 36, marginRight: 76 }} image={require('../../assets/footer/home-icon.png')} label='Pág. inicial'/>
-        </Link>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => { setIsOpen(!isOpen); console.log('teste') }}>
           <Img source={require('../../assets/footer/plus-icon.png')}/>
         </TouchableOpacity>
-        <Link to="/explore">
+        <TouchableOpacity onPress={() => { history.push('/explore') } }>
           <IconLabel style={{ marginLeft: 76, marginRight: 36 }} image={require('../../assets/footer/explore-icon.png')} label='Explorar'/>
-        </Link>
+        </TouchableOpacity>
       </Flexbox>
       <FooterSelect style={{ display: isOpen ? 'flex' : 'none' }}>
         {getOptions()}
