@@ -8,4 +8,5 @@ export default interface User {
   uf: string
   city: string
   communitys: string[]
+  token: string
 }

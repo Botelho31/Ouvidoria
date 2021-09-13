@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, ViewStyle } from 'react-native'
 import styled from 'styled-components'
 import { Flexbox, Header4, StyleColors } from '../../styles'
 interface BackgroundProps{
@@ -22,6 +22,7 @@ const Label = styled(Header4)`
 `
 
 interface PrimaryButtonProps{
+  style?: any
   text: string
   width: number
   onPress?: () => void
@@ -29,7 +30,7 @@ interface PrimaryButtonProps{
 
 const PrimaryButton: FC<PrimaryButtonProps> = (props: PrimaryButtonProps) => {
   return (
-    <Background onPress={props.onPress} width={props.width}>
+    <Background style={props.style} onPress={props.onPress} width={props.width}>
       <Flexbox style={{ width: '100%', height: '100%' }}>
         <Label>{props.text}</Label>
       </Flexbox>

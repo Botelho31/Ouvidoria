@@ -21,7 +21,7 @@ const OrderDropdownStyle = styled(Flexbox)`
 const OrderDropdownTextStyle = styled(Header3)`
     color: ${StyleColors.primary};
     text-align: left;
-    font-family: 'OpenSans';
+    font-family: 'Arial' ;
     font-weight: bold;
     font-size: 12px;
     padding-left: 16px;

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   dropdownTextStyle: {
     color: StyleColors.darkGray,
     textAlign: 'left',
-    fontFamily: 'OpenSans',
+    fontFamily: 'Arial' ,
     fontWeight: 'bold',
     fontSize: 12,
     paddingLeft: 16

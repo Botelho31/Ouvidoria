@@ -21,7 +21,7 @@ const DropdownStyle = styled(Flexbox)`
 const DropdownTextStyle = styled(Header3)`
     color: ${StyleColors.darkGray};
     text-align: left;
-    font-family: 'OpenSans';
+    font-family: 'Arial' ;
     font-weight: bold;
     font-size: 12px;
     padding-left: 16px;

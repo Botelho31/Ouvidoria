@@ -23,16 +23,19 @@ const Input = styled(TextInput)`
 `
 
 interface InputLabelProps{
+  style?: any
   check: boolean
+  password?: boolean
   title: string
   placeholder: string
+  onChange: (val: string) => void
 }
 
 const InputLabel: FC<InputLabelProps> = (props: InputLabelProps) => {
   return (
-    <Background flexDirection='column'>
+    <Background style={props.style} flexDirection='column'>
       <Label>{props.title}</Label>
-      <Input placeholder={props.placeholder}></Input>
+      <Input autoCapitalize='none' secureTextEntry={props.password} onChangeText={props.onChange} placeholder={props.placeholder}></Input>
     </Background>
   )
 }

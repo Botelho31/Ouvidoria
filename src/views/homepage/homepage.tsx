@@ -7,12 +7,18 @@ import { Header1, StyleColors } from '../../styles'
 import Post from '../../infra/models/post'
 import { getByUser } from '../../infra/service/post-service'
 import PostCell from '../../components/posts/post-cell'
+import config from '../../infra/config'
+import { useHistory } from 'react-router'
 
 const Homepage: FC = () => {
   const [noticias, setNoticias] = React.useState<News[]>([])
   const [posts, setPosts] = React.useState<Post[]>([])
 
-  React.useEffect(() => {
+  const history = useHistory()
+  React.useEffect(async () => {
+    if (!config.isLoggedIn) {
+      history.push('/login')
+    }
     async function loadData () {
       const noticiasArray = await list()
       setNoticias(noticiasArray)
