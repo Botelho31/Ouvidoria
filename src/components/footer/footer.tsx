@@ -4,6 +4,7 @@ import { Link } from 'react-router-native'
 import styled from 'styled-components'
 import { Flexbox, Paragraph, StyleColors } from '../../styles'
 import IconLabel from './icon-label'
+import { useHistory } from 'react-router-native'
 
 const statusBar = StatusBar.currentHeight ? StatusBar.currentHeight : 0
 const windowHeight = Dimensions.get('window').height - 48 - statusBar
