@@ -1,6 +1,4 @@
-import config from '../config'
 import News from '../models/news'
-import axios from 'axios'
 import { get, post } from './base-service'
 
 const relativePath = 'news/'

@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import config from '../config'
-import News from '../models/news'
+
 import axios from 'axios'
 
 const baseIP = config.baseIP

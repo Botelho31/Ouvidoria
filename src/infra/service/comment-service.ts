@@ -1,6 +1,4 @@
-import config from '../config'
 import Comment from '../models/comment'
-import axios from 'axios'
 import { post, put } from './base-service'
 
 const relativePath = 'comment/'
