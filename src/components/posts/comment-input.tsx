@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
-import { TextInput, Image } from 'react-native'
+import { TextInput, Image, Text, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components'
+import { create } from '../../infra/service/comment-service'
 import { Flexbox, Header3, StyleColors } from '../../styles'
 
 const Background = styled(Flexbox)`
@@ -28,13 +29,36 @@ const Img = styled(Image)`
 
 interface CommentInputProps{
   aaa?: number
+  idPost?: string
+  idComment?: string
+  idUser: string
+  onPost: () => void
 }
 
 const CommentInput: FC<CommentInputProps> = (props: CommentInputProps) => {
+  const [currentValue, setCurrentValue] = React.useState('')
+
+  async function comment () {
+    const data = {
+      idUser: props.idUser,
+      body: currentValue
+    }
+    if (props.idPost !== undefined) {
+      data.idPost = props.idPost
+    } else {
+      data.idComment = props.idComment
+    }
+    await create(data)
+    setCurrentValue('')
+    props.onPost()
+  }
   return (
     <Background flexDirection='row' horizontalAlign='flex-start' verticalAlign="center">
-      <Input style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft: 8 }}placeholder='Escrever um comentário...'></Input>
-      <Img source={require('../../assets/send-icon.png')}/>
+      <Input onChangeText={(val) => setCurrentValue(val)} value={currentValue} style={{ marginTop: 'auto', marginBottom: 'auto', marginLeft: 8 }} placeholder='Escrever um comentário...'></Input>
+      <TouchableWithoutFeedback onPress={comment}>
+        <Img source={require('../../assets/send-icon.png')}/>
+      </TouchableWithoutFeedback>
+      <Text style={{ display: 'none'}}>{currentValue}</Text>
     </Background>
   )
 }

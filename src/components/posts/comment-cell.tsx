@@ -47,6 +47,7 @@ const Text = styled(Header4)`
 
 interface CommentCellProps{
   comment?: Comment
+  onPost: () => void
 }
 
 const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
@@ -91,7 +92,7 @@ const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
         </Margin>
       </CommentSpace>
       <Line/>
-      <CommentInput/>
+      <CommentInput onPost={props.onPost} idUser={commentData?.idUser} idComment={commentData?.id}/>
       <Margin marginLeft='32px'>
         {getComment()}
       </Margin>

@@ -86,11 +86,11 @@ const PostCell: FC<PostCellProps> = (props: PostCellProps) => {
     if ((postObject.comments != null) && props.showComments) {
       for (let index = 0; index < postObject.comments.length; index++) {
         const comment = postObject?.comments[index]
-        children.push(<CommentCell comment={comment}/>)
+        children.push(<CommentCell onPost={reloadData} comment={comment}/>)
       }
       return (<View>
         <Line/>
-        <CommentInput/>
+        <CommentInput onPost={reloadData} idUser={postObject.idUser} idPost={postObject.idPost} />
         {children}
       </View>)
     }
