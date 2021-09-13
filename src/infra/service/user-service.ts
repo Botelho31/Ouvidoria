@@ -39,3 +39,14 @@ export async function community (id: string) : Promise<User> {
   }
   return {} as User
 }
+
+// Função que lista um user
+export async function get () : Promise<User> {
+  try {
+    const data = await get(relativePath)
+    return data as User
+  } catch (err) {
+    console.log(err)
+  }
+  return {} as User
+}
