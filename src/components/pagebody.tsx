@@ -10,8 +10,8 @@ interface PageBodyProps {
 const PageBody: FC<PageBodyProps> = (props: PageBodyProps) => {
   return (
     <SafeAreaView style={{ display: 'flex', width: 375, marginRight: 'auto', marginLeft: 'auto' }}>
-      <Header isSearchbar={true}/>
-      <ScrollView>
+      <Header isSearchbar={false}/>
+      <ScrollView style={{ marginBottom: 60 }}>
           {props.children}
       </ScrollView>
       <Footer />

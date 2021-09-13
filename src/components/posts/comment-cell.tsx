@@ -9,11 +9,14 @@ import DateCell from './date-cell'
 import UpvoteButton from './upvote-button'
 
 const Background = styled(Flexbox)`
+  alignSelf: stretch;
+  alignItems: flex-start;
   margin-bottom: 10px;
 `
 
 const Line = styled(View)`
-  width: 100%;
+  alignSelf: stretch;
+  margin-top: 2px;
   height: 1px;
   background-color: #C4C4C4;;
 `
@@ -37,11 +40,11 @@ const ProfileImage = styled(Image)`
 `
 
 const Text = styled(Header4)`
-
+  alignSelf: stretch;
 `
 
 interface CommentCellProps{
-  comment?: Comment
+  comment: Comment
 }
 
 const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
@@ -64,16 +67,16 @@ const CommentCell: FC<CommentCellProps> = (props: CommentCellProps) => {
           <InfoTitle flexDirection='column'>
             <UserName>Lucas Mendonca</UserName>
             <Margin marginTop='4px'>
-              <DateCell>10/09/2021 - 17:24</DateCell>
+              <DateCell>{String(props.comment.date)}</DateCell>
             </Margin>
           </InfoTitle>
         </Flexbox>
         <Margin marginTop='4px'marginLeft='16px' marginRight='24px'>
-          <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse egestas commodo, maecenas in egestas etiam sapien enim. Ac amet sapien suscipit mauris convallis venenatis suspendisse massa nunc cabe mais uma linha.</Text>
+          <Text>{props.comment?.body}</Text>
           <Margin marginTop='8px'>
-            <Flexbox>
-              <UpvoteButton voteNumber={45} width={80}/>
-              <CommentButton commentNumber={1} width={112}/>
+            <Flexbox horizontalAlign='flex-start'>
+              <UpvoteButton voteNumber={props.comment?.upvotes.length - props.comment?.downvotes.length} width={80}/>
+              <CommentButton commentNumber={props.comment?.answers.length} width={112}/>
             </Flexbox>
           </Margin>
         </Margin>
