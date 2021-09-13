@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Image, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
+import { Image, Modal, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import styled from 'styled-components'
 import { Flexbox, Header3, Header4, Spacer, StyleColors } from '../../styles'
 
@@ -61,13 +61,23 @@ interface DropdownProps {
 
 const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [currentPos, setCurrentPos] = React.useState({ x: 0, y: 0 })
   const [currentValue, setCurrentValue] = React.useState('')
+
+  let dropdownRef : React.RefObject<View> = React.useRef()
+
+  React.useEffect(() => {
+    dropdownRef.current.measure((fx, fy, width, height, px, py) => {
+      setCurrentPos({ x: px, y: py })
+    })
+  }, [])
 
   function getOptions () {
     const children = []
     for (let i = 0; i < props.options.length; i++) {
       children.push(
         <TouchableWithoutFeedback onPress={() => {
+          setIsOpen(!isOpen)
           setCurrentValue(props.options[i].value)
           props.onChange(props.options[i].value)
         }}>
@@ -81,7 +91,7 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
   }
 
   return (
-    <View >
+    <View ref={dropdownRef}>
       <TouchableWithoutFeedback onPress={() => setIsOpen(!isOpen)}>
         <DropdownStyle>
           <DropdownTextStyle>{currentValue === '' ? props.placeholder : currentValue}</DropdownTextStyle>
@@ -89,11 +99,23 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
           <DropdownIconStyle source={require('../../assets/chevron-down.png')}/>
         </DropdownStyle>
       </TouchableWithoutFeedback>
-      <DropdownScrollStyle style={{ display: isOpen ? 'flex' : 'none' }}>
-        <Flexbox flexDirection="column">
-          {getOptions()}
-        </Flexbox>
-      </DropdownScrollStyle>
+        <Modal
+          transparent={true}
+          visible={isOpen}
+          onRequestClose={() => {
+            setIsOpen(!isOpen)
+          }}
+        >
+          <TouchableWithoutFeedback onPress={() => setIsOpen(!isOpen)}>
+            <Flexbox>
+              <DropdownScrollStyle style={{ display: isOpen ? 'flex' : 'none', position: 'absolute', top: currentPos.y + 32, left: currentPos.x }}>
+                <Flexbox flexDirection="column">
+                  {getOptions()}
+                </Flexbox>
+              </DropdownScrollStyle>
+            </Flexbox>
+          </TouchableWithoutFeedback>
+        </Modal>
     </View>
   )
 }

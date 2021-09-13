@@ -22,7 +22,7 @@ const Label = styled(Header4)`
 interface PrimaryButtonProps{
   text: string
   width: number
-  onPress?: void
+  onPress?: () => void
 }
 
 const PrimaryButton: FC<PrimaryButtonProps> = (props: PrimaryButtonProps) => {

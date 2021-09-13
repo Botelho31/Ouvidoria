@@ -5,6 +5,7 @@ import InputSwitch from '../../components/forms/InputSwitch'
 import { Flexbox, Header2, Paragraph, StyleColors } from '../../styles'
 import styled from 'styled-components'
 import config from '../../infra/config'
+import { useHistory } from 'react-router-native'
 
 const complaintTypes = [
   {
@@ -66,6 +67,7 @@ const Complaint: FC = () => {
   const [communityVal, setCommunityVal] = React.useState('')
   const [typeVal, setTypeVal] = React.useState('')
   const [anonymousVal, setAnonymousVal] = React.useState(false)
+  const history = useHistory()
 
   function getTitleCard () {
     return (
@@ -85,8 +87,11 @@ const Complaint: FC = () => {
     )
   }
 
-  async function createPost() {
+  async function createPost () {
     const user = await config.getUser()
+    if (!user) {
+      return
+    }
     const post = {
       idCommunity: communityVal,
       communityName: communityVal,
@@ -98,6 +103,7 @@ const Complaint: FC = () => {
       type: typeVal,
       anonymous: anonymousVal
     }
+    console.log(post)
   }
 
   return (
@@ -116,9 +122,9 @@ const Complaint: FC = () => {
         <Flexbox flexDirection="column" style={{ width: '100%' }}>
           <InputImage text="Inserir arquivo em anexo"/>
           <Margin/>
-          <PrimaryButton text="Enviar contribuição" width={157}/>
+          <PrimaryButton onPress={createPost} text="Enviar contribuição" width={157}/>
           <Margin/>
-          <SecondaryButton text="Cancelar" width={157}/>
+          <SecondaryButton onPress={() => history.push('/')} text="Cancelar" width={157}/>
         </Flexbox>
       </Flexbox>
     </PageBody>
