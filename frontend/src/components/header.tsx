@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
-import { Image, StyleSheet } from 'react-native'
+import { Image, StyleSheet, AsyncStorage, TouchableOpacity } from 'react-native'
 import styled from 'styled-components'
 import { SmallSearchBar } from '.'
 import { Flexbox, Header1, StyleColors } from '../styles'
+import { useHistory } from 'react-router'
 
 const styles = StyleSheet.create({
   headerStyle: {
@@ -41,9 +42,18 @@ interface HeaderProps {
 
 // Componente que faz o papel de header do site, além disso, contem dois estádos
 const Header: FC<HeaderProps> = (props: HeaderProps) => {
+  const history = useHistory()
+  async function Logout () {
+    await AsyncStorage.removeItem('user')
+    await AsyncStorage.removeItem('token')
+    history.push('/login')
+  }
+
   return (
     <HeaderStyle style={styles.headerStyle}>
-      <Image style={props.isSearchbar ? styles.searchBarimageStyle : styles.imageStyle} source={require('../assets/user-circle.png')}/>
+      <TouchableOpacity onPress={Logout}>
+        <Image style={props.isSearchbar ? styles.searchBarimageStyle : styles.imageStyle} source={require('../assets/user-circle.png')}/>
+      </TouchableOpacity>
       {props.isSearchbar ? <SmallSearchBar placeholder="Pesquise um órgão público"/> : <Header1 color={StyleColors.primary}> Voz do Povo </Header1>}
     </HeaderStyle>
   )
