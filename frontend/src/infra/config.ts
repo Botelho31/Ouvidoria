@@ -4,15 +4,18 @@ import User from './models/user'
 
 // Arquivo de configuração da aplicação
 const config = {
-  baseIP: 'http://192.168.0.22:8080/',
+  baseIP: 'http://3.88.0.15:8080/',
   isLoggedIn: false,
   getToken: async function getToken () : Promise<string | null> {
-    const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaXR5IjoiQnJhc8OtbGlhIiwicmFjZSI6IkJSQU5DTyIsInVmIjoiRGlzdHJpdG8gRmVkZXJhbCIsInBhc3N3b3JkIjoiJDJhJDEwJG40dXNzbzFmVFVJZHFQMllDRzhmdS45SGJzZ1Fqd0Qwb1psbzhhNGYxY3hHQmJVRE50QVNtIiwiZW1haWwiOiJsdWtpdG8wMjBAZ21haWwuY29tIiwibmFtZSI6Ikx1Y2FzIE1lbmRvbsOnIiwiZ2VuZGVyIjoiTUFTQ1VMSU5PIiwiY29tbXVuaXR5cyI6W10sImFnZSI6MTksImlhdCI6MTYzMTQ5MDU4NCwiZXhwIjoxNjMyMDk1Mzg0fQ.YLeBymu3ezCbzdKdDJ_5WcteFuow7s1U-Jm_TfzTuOY'
-    return token
+    const token = await AsyncStorage.getItem('token')
+    return 'Bearer ' + token as string | null
   },
   getUser: async function getUser () : Promise<User | null> {
     const user = await AsyncStorage.getItem('user')
     const userJson = JSON.parse(String(user))
+    // await AsyncStorage.removeItem('user')
+    // await AsyncStorage.removeItem('token')
+    // return null
     return userJson as User | null
   }
 }

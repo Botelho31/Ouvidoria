@@ -5,7 +5,7 @@ import { list } from '../../infra/service/news-service'
 import News from '../../infra/models/news'
 import { Header1, StyleColors } from '../../styles'
 import Post from '../../infra/models/post'
-import { getByUser } from '../../infra/service/post-service'
+import { getAll } from '../../infra/service/post-service'
 import PostCell from '../../components/posts/post-cell'
 import config from '../../infra/config'
 import { useHistory } from 'react-router'
@@ -21,7 +21,7 @@ const Homepage: FC = () => {
     async function loadData () {
       const noticiasArray = await list()
       setNoticias(noticiasArray)
-      setPosts(await getByUser())
+      setPosts(await getAll())
     }
     async function checkLogin () {
       const user = await config.getUser()

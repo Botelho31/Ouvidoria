@@ -10,6 +10,7 @@ import { getSorted } from '../../infra/service/community-service'
 import { getAll } from '../../infra/service/post-service'
 import Post from '../../infra/models/post'
 import PostCell from '../../components/posts/post-cell'
+import { Link } from 'react-router-native'
 
 const Img = styled(Image)`
   width: 375px;
@@ -38,7 +39,7 @@ const ExploreScreen: FC = () => {
     const children = []
     for (let index = 0; index < noticias.length; index++) {
       const noticia = noticias[index]
-      children.push(<NewsCell title={noticia.title} imageURL={noticia.bannerImageUrl}/>)
+      children.push(<Link to={`/news/${noticias[index].id}`}><NewsCell title={noticia.title} imageURL={noticia.bannerImageUrl}/></Link>)
     }
     return children
   }
@@ -47,7 +48,7 @@ const ExploreScreen: FC = () => {
     const children = []
     for (let index = 0; index < communityAsc.length; index++) {
       const element = communityAsc[index]
-      children.push(<ScrollCell title={element.name} numberColor={StyleColors.success} number={String(index + 1) + 'º'} imageURL={element.profileImageUrl}/>)
+      children.push(<Link to={`/profile/${element.id}`}><ScrollCell title={element.name} numberColor={StyleColors.success} number={String(index + 1) + 'º'} imageURL={element.profileImageUrl}/></Link>)
     }
     return children
   }
@@ -56,7 +57,9 @@ const ExploreScreen: FC = () => {
     const children = []
     for (let index = 0; index < communityDesc.length; index++) {
       const element = communityDesc[index]
-      children.push(<ScrollCell title={element.name} numberColor={StyleColors.error} number={String(index + 1) + 'º'} imageURL={element.profileImageUrl}/>)
+      children.push(<Link to={`/profile/${element.id}`}>
+                      <ScrollCell title={element.name} numberColor={StyleColors.error} number={String(index + 1) + 'º'} imageURL={element.profileImageUrl}/>
+                      </Link>)
     }
     return children
   }
